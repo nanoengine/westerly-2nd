@@ -118,14 +118,23 @@
   .btn.solid{background:var(--ink);color:#F2F7F3;border-color:var(--ink)}
   .btnrow{display:flex;gap:8px;flex-wrap:wrap}
 
-  /* ---------- money ---------- */
-  .money{background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
-  .bar{height:12px;border-radius:999px;background:var(--paper);overflow:hidden;margin:10px 0 8px}
-  .bar span{display:block;height:100%;background:var(--teacher)}
-  .figs{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink-soft)}
-  .spend{margin:14px 0 0;padding:0;list-style:none;font-size:14px}
-  .spend li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--rule)}
-  .spend li span:last-child{color:var(--ink-soft);white-space:nowrap}
+  /* ---------- class fund receipt ---------- */
+  .ledger{position:relative;background:var(--card);padding:20px 18px 22px;box-shadow:var(--shadow);
+          border-radius:16px 16px 2px 2px;overflow:visible}
+  .ledger:after{content:"";position:absolute;left:0;right:0;bottom:-11px;height:12px;
+    background:linear-gradient(135deg,var(--card) 33.33%,transparent 0),
+               linear-gradient(-135deg,var(--card) 33.33%,transparent 0);
+    background-size:18px 12px;background-repeat:repeat-x}
+  .ledger .kick{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;
+                text-transform:uppercase;color:var(--ink-soft)}
+  .ledger .rule{border:0;border-top:1px dashed var(--rule);margin:12px 0 14px}
+  .ledger h4{font-family:var(--display);font-weight:800;font-size:21px;line-height:1.12;margin:0 0 8px}
+  .ledger p{margin:0 0 14px;font-size:14.5px}
+  .ledger .stamp{display:inline-block;transform:rotate(-3deg);border:2px solid var(--teacher);
+    color:var(--teacher);border-radius:6px;padding:5px 10px;margin-bottom:12px;
+    font:700 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase}
+  .ledger a.open{display:inline-block;background:var(--ink);color:#F2F7F3;text-decoration:none;
+    border-radius:10px;padding:11px 15px;font:600 14.5px var(--body)}
 
   /* ---------- teachers ---------- */
   .fav{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow);margin-bottom:8px}
@@ -190,7 +199,7 @@
 
   <section>
     <h3>Where the class fund goes</h3>
-    <div class="money" id="money"></div>
+    <div id="fund"></div>
   </section>
 
   <section>
@@ -255,49 +264,12 @@
     }
   ],
   "fund": {
-    "suggestedPerFamily": 100,
-    "raised": 1592.97,
-    "planned": 1470,
-    "reserve": 300,
-    "note": "Class donations plus the Westerly contribution and last year's carryover. A contribution is welcome, never required — every child takes part either way.",
-    "lines": [
-      {
-        "what": "Halloween — bag-making supplies and candy",
-        "amount": 65
-      },
-      {
-        "what": "Winter — hot cocoa, decorations and mentor ornaments",
-        "amount": 190
-      },
-      {
-        "what": "Holiday thank-yous for our teachers and art teacher",
-        "amount": 300
-      },
-      {
-        "what": "Valentine's — five centers and mentor bracelets",
-        "amount": 115
-      },
-      {
-        "what": "Lunar New Year and St. Patrick's Day",
-        "amount": 50
-      },
-      {
-        "what": "End of year — Beach Day lunch, decorations, mentor gifts",
-        "amount": 240
-      },
-      {
-        "what": "Teacher birthdays — gifts and treats",
-        "amount": 160
-      },
-      {
-        "what": "Teacher Appreciation — staff lounge stock-up",
-        "amount": 150
-      },
-      {
-        "what": "Poetry celebration and still to be allocated",
-        "amount": 200
-      }
-    ]
+    "kicker": "Class fund · open books",
+    "stamp": "One ask, all year",
+    "headline": "Every dollar is on one sheet, and you can see it any time.",
+    "body": "The fund pays for class celebrations, field study snacks, mentor gifts, end-of-year gifts, and thank-yous for our teachers. We collect once in September and try hard not to come back for more. The tracker is live — what came in, what went out, what's left.",
+    "linkLabel": "Open the live tracker",
+    "url": "https://docs.google.com/spreadsheets/d/14SR4aytAs5Dm0ckS7-S5wXpMs9KAeILj/edit?gid=2072415431#gid=2072415431"
   },
   "teachers": [
     {
@@ -581,7 +553,6 @@
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function today(){var t=new Date();return new Date(t.getFullYear(),t.getMonth(),t.getDate());}
   function sorted(){return data.events.slice().sort(function(a,b){return parse(a.date)-parse(b.date);});}
-  function money(n){return '$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:0});}
 
   function toast(msg){
     var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
@@ -688,16 +659,18 @@
   }
 
   /* ---------- money ---------- */
-  function renderMoney(){
-    var f=data.fund, pct=Math.min(100,Math.round(f.raised/(f.planned+f.reserve)*100));
-    document.getElementById('money').innerHTML=
-      '<p style="margin:0;font-size:14.5px">'+esc(f.note)+'</p>'+
-      '<div class="bar"><span style="width:'+pct+'%"></span></div>'+
-      '<div class="figs"><span>'+money(f.raised)+' in</span><span>'+money(f.planned+f.reserve)+' planned for the year</span></div>'+
-      '<p style="margin:12px 0 0;font-size:14.5px">Suggested contribution: <b>'+money(f.suggestedPerFamily)+' per family</b> for the whole year. '+esc(data.meta.contact)+'</p>'+
-      '<ul class="spend">'+f.lines.map(function(l){
-        return '<li><span>'+esc(l.what)+'</span><span>'+money(l.amount)+'</span></li>';
-      }).join('')+'</ul>';
+  function renderFund(){
+    var f=data.fund||{};
+    document.getElementById('fund').innerHTML=
+      '<div class="ledger">'+
+      '<p class="kick">'+esc(f.kicker||'Class fund')+'</p>'+
+      '<hr class="rule">'+
+      (f.stamp?'<div class="stamp">'+esc(f.stamp)+'</div>':'')+
+      '<h4>'+esc(f.headline||'')+'</h4>'+
+      '<p>'+esc(f.body||'')+'</p>'+
+      (f.url?'<a class="open" href="'+esc(f.url)+'" target="_blank" rel="noopener">'+
+        esc(f.linkLabel||'Open the tracker')+' &rarr;</a>':'')+
+      '</div>';
   }
 
   /* ---------- teachers ---------- */
@@ -793,7 +766,7 @@
     };
   }
 
-  function renderAll(){renderNext();renderSignup();renderCallouts();renderFilters();renderEvents();renderMoney();renderTeachers();renderFoot();}
+  function renderAll(){renderNext();renderSignup();renderCallouts();renderFilters();renderEvents();renderFund();renderTeachers();renderFoot();}
   renderAll();wireTools();
 })();
 </script>
