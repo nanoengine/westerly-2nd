@@ -4,180 +4,218 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>2nd Grade at Westerly — Class Hub 2026–27</title>
+<meta name="theme-color" content="#15224A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#16382F;
-    --ink-soft:#547068;
-    --paper:#ECF1EC;
+    --paper:#FBF6EC;
+    --ink:#15224A;
+    --ink-soft:#5C6684;
     --card:#FFFFFF;
-    --rule:#D3DED7;
-    --celebration:#E06B1F;
-    --birthday:#B8446B;
-    --gift:#6B5BA8;
-    --trip:#2F7EA8;
-    --teacher:#2E7F63;
-    --school:#647E76;
-    --shadow:0 1px 0 rgba(22,56,47,.06), 0 6px 18px -12px rgba(22,56,47,.45);
-    --display:"Baloo 2","Trebuchet MS",Verdana,sans-serif;
+    --rule:#E6DECD;
+    --pink:#FF4F9A;
+    --gold:#F5A623;
+    --teal:#00A18C;
+    --violet:#7B5BE0;
+    --blue:#2358C9;
+    --slate:#66738F;
+    --display:"Bricolage Grotesque","Trebuchet MS",Verdana,sans-serif;
     --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --lift:0 2px 0 rgba(21,34,74,.05), 0 14px 24px -18px rgba(21,34,74,.5);
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
     margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--body);font-size:16px;line-height:1.55;
+    font-family:var(--body);font-size:15.5px;line-height:1.55;
     padding-bottom:env(safe-area-inset-bottom);
   }
-  .wrap{max-width:680px;margin:0 auto;padding:0 16px 64px}
-
-  /* ---------- masthead ---------- */
-  .top{background:var(--ink);color:#F2F7F3;padding:26px 0 22px;margin-bottom:18px}
-  .top .wrap{padding-bottom:0}
-  .kicker{font-family:var(--body);font-size:13px;letter-spacing:.02em;color:#A7C6B6;margin:0 0 2px}
-  h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,42px);line-height:1.02;margin:0 0 10px;letter-spacing:-.01em}
-  .top p.sub{margin:0;color:#C7DBCF;font-size:15px;max-width:46ch}
-
-  /* ---------- next up ---------- */
-  .nextup{
-    background:var(--card);border-radius:18px;padding:18px 18px 16px;
-    box-shadow:var(--shadow);margin:-34px 0 22px;position:relative;overflow:hidden;
+  /* paper grain over everything */
+  body:before{
+    content:"";position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  .nextup:before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--celebration)}
-  .nextup .when{font-family:var(--display);font-weight:700;font-size:15px;color:var(--celebration);margin:0 0 2px}
-  .nextup h2{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.1;margin:0 0 6px}
-  .nextup .ask{margin:10px 0 0;padding:10px 12px;background:var(--paper);border-radius:12px;font-size:14.5px}
-  .nextup .ask strong{font-weight:600}
-  .countdown{font-family:var(--display);font-weight:700;font-size:13px;color:var(--ink-soft);margin-top:8px}
+  .wrap{max-width:660px;margin:0 auto;padding:0 18px 70px}
 
-  /* ---------- section shells ---------- */
-  section{margin:30px 0 0}
-  h3{font-family:var(--display);font-weight:800;font-size:20px;margin:0 0 4px}
-  .lede{margin:0 0 14px;color:var(--ink-soft);font-size:14.5px;max-width:56ch}
+  /* ================= masthead: overprinted inks ================= */
+  .top{position:relative;background:var(--ink);color:#FDF8F0;padding:32px 0 26px;overflow:hidden;margin-bottom:20px}
+  .top .wrap{padding-bottom:0;position:relative;z-index:2}
+  .top .ink{position:absolute;border-radius:50%;mix-blend-mode:screen;opacity:.62;z-index:0}
+  .ink-a{width:230px;height:230px;background:var(--pink);right:-70px;top:-78px}
+  .ink-b{width:170px;height:170px;background:var(--teal);right:14px;top:22px}
+  .top .dots{position:absolute;inset:0;z-index:1;opacity:.16;color:#fff;
+    background-image:radial-gradient(currentColor 1px,transparent 1.3px);background-size:7px 7px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,10vw,54px);line-height:.94;
+     letter-spacing:-.025em;margin:0 0 12px;max-width:9ch}
+  .top .sub{margin:0;color:#C9D3EA;font-size:15px;max-width:40ch}
 
-  /* ---------- filters ---------- */
-  /* ---------- signup banner ---------- */
-  .signup{display:block;background:var(--gift);color:#fff;border-radius:16px;padding:15px 17px;
-          text-decoration:none;box-shadow:var(--shadow);margin:0 0 22px}
-  .signup b{display:block;font-family:var(--display);font-weight:800;font-size:18.5px;line-height:1.15}
-  .signup span{display:block;font-size:14px;margin-top:4px;color:#EDE8FA}
-  .signup .go{display:inline-block;margin-top:9px;font-weight:600;font-size:14.5px}
+  /* ================= next up: the poster ================= */
+  .nextup{position:relative;background:var(--card);border-radius:4px;padding:0 0 18px;
+          box-shadow:var(--lift);margin:-36px 0 26px;overflow:hidden;z-index:3}
+  .nextup .bar{height:9px;background:var(--c,var(--pink))}
+  .nextup .pad{padding:16px 18px 0}
+  .nextup .when{font-family:var(--display);font-weight:700;font-size:14.5px;color:var(--c,var(--pink));margin:0 0 3px}
+  .nextup h2{font-family:var(--display);font-weight:800;font-size:27px;line-height:1.04;
+             letter-spacing:-.015em;margin:0 0 12px}
+  .nextup .ask{margin:0;padding:12px 14px;background:var(--paper);border-radius:3px;font-size:14.5px}
+  .nextup .ask b{font-weight:600}
+  .nextup .days{display:inline-block;margin:13px 0 0;padding:5px 12px;border-radius:999px;
+    background:var(--c,var(--pink));color:#fff;font:700 13px var(--display)}
 
-  /* ---------- callouts ---------- */
-  .call{background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:10px;
-        border-left:6px solid var(--gift)}
-  .call b{display:block;font-family:var(--display);font-weight:800;font-size:18px;line-height:1.15;margin-bottom:6px}
+  /* ================= sections ================= */
+  section{margin:34px 0 0}
+  h3{font-family:var(--display);font-weight:800;font-size:23px;line-height:1.1;letter-spacing:-.015em;
+     margin:0 0 6px;padding-bottom:13px;background-repeat:repeat-x;background-position:left bottom;
+     background-size:104px 9px;
+     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 9'%3E%3Cpath d='M2 6.2q13-6.4 26 0t26 0 26 0 22 0' fill='none' stroke='%23FF4F9A' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E")}
+  .lede{margin:10px 0 16px;color:var(--ink-soft);font-size:14.5px;max-width:52ch}
+
+  /* ================= sign-up ================= */
+  .signup{position:relative;display:block;background:var(--violet);color:#fff;border-radius:4px;
+    padding:18px;text-decoration:none;box-shadow:var(--lift);margin:0 0 26px;overflow:hidden}
+  .signup .dots{position:absolute;inset:0;opacity:.13;color:#fff;
+    background-image:radial-gradient(currentColor 1px,transparent 1.3px);background-size:7px 7px}
+  .signup > *{position:relative}
+  .signup b{display:block;font-family:var(--display);font-weight:800;font-size:21px;line-height:1.08;letter-spacing:-.015em}
+  .signup .note{display:block;font-size:14px;margin-top:5px;color:#EDE6FF;max-width:34ch}
+  .signup .go{display:inline-block;margin-top:12px;background:#fff;color:var(--violet);
+    border-radius:999px;padding:8px 15px;font:600 14px var(--body)}
+
+  /* ================= callouts ================= */
+  .call{background:var(--card);border-radius:4px;padding:17px;box-shadow:var(--lift);margin-bottom:12px;
+        border-top:7px solid var(--c)}
+  .call:nth-child(1){--c:var(--teal)}
+  .call:nth-child(2){--c:var(--gold)}
+  .call b{display:block;font-family:var(--display);font-weight:800;font-size:20px;line-height:1.12;
+          letter-spacing:-.015em;margin-bottom:7px}
   .call p{margin:0;font-size:14.5px}
-  .call .act{margin-top:10px;font-size:14px;font-weight:600;color:var(--gift)}
+  .call .act{margin-top:11px;font-size:14.5px;font-weight:600;color:var(--c)}
+  .call .act a{color:inherit}
 
-  /* ---------- filters ---------- */
-  .filters{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  /* ================= filters ================= */
+  .filters{display:flex;gap:7px;overflow-x:auto;padding:4px 0 12px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .filters::-webkit-scrollbar{display:none}
-  .chip{
-    flex:0 0 auto;border:1px solid var(--rule);background:var(--card);color:var(--ink);
-    border-radius:999px;padding:7px 14px;font:500 14px var(--body);cursor:pointer;
-  }
-  .chip[aria-pressed="true"]{background:var(--ink);color:#F2F7F3;border-color:var(--ink)}
-  .chip:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gift);outline-offset:2px}
+  .chip{flex:0 0 auto;border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+    border-radius:999px;padding:6px 14px;font:500 14px var(--body);cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  .chip:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
 
-  /* ---------- month + events ---------- */
-  .month{font-family:var(--display);font-weight:700;font-size:13px;color:var(--ink-soft);
-         margin:22px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
-  .row{display:flex;gap:10px;align-items:baseline;padding:9px 6px;border-bottom:1px dashed var(--rule)}
-  .row .rd{flex:0 0 62px;font-family:var(--display);font-weight:700;font-size:13.5px;color:var(--birthday)}
+  /* ================= the year ================= */
+  .month{display:flex;align-items:center;gap:10px;margin:26px 0 10px;
+    font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.01em}
+  .month:after{content:"";flex:1;height:2px;background:var(--rule)}
+
+  /* birthdays: hairline rows */
+  .row{display:flex;gap:11px;align-items:baseline;padding:9px 2px;border-bottom:1px solid var(--rule)}
+  .row .rd{flex:0 0 58px;font-family:var(--display);font-weight:700;font-size:14px;color:var(--gold)}
   .row .rn{flex:1;font-size:15px}
   .row .rw{font-size:12.5px;color:var(--ink-soft)}
-  .ev{background:var(--card);border-radius:14px;margin-bottom:8px;box-shadow:var(--shadow);overflow:hidden}
-  .ev summary{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;cursor:pointer;list-style:none}
+
+  /* everything else: tinted ink cards */
+  .ev{background:var(--tint,var(--card));border-radius:4px;margin-bottom:10px;box-shadow:var(--lift);
+      overflow:hidden;border-left:7px solid var(--c)}
+  .ev summary{display:flex;gap:13px;align-items:flex-start;padding:14px;cursor:pointer;list-style:none}
   .ev summary::-webkit-details-marker{display:none}
-  .date{
-    flex:0 0 46px;text-align:center;border-radius:10px;padding:5px 0;background:var(--paper);
-    font-family:var(--display);line-height:1.05;
-  }
-  .date .d{display:block;font-weight:800;font-size:19px}
-  .date .m{display:block;font-weight:500;font-size:10.5px;color:var(--ink-soft)}
+  .date{flex:0 0 50px;height:50px;border-radius:50%;background:var(--c);color:#fff;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-family:var(--display);line-height:1}
+  .date .d{font-weight:800;font-size:19px}
+  .date .m{font-weight:500;font-size:10px;margin-top:2px;opacity:.9}
   .ev .t{flex:1;min-width:0}
-  .ev .t b{display:block;font-family:var(--display);font-weight:700;font-size:16.5px;line-height:1.2}
-  .meta{font-size:13px;color:var(--ink-soft);margin-top:2px}
-  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
-  .flag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 7px;border-radius:999px;margin-top:6px}
-  .flag.help{background:#FBE9DC;color:#8A3E08}
-  .flag.tbd{background:#E6E4F2;color:#463C7A}
-  .body{padding:0 14px 14px 56px;font-size:14.5px}
-  .body p{margin:0 0 10px}
-  .needs{margin:0 0 12px;padding:0;list-style:none}
-  .needs li{padding:7px 0 7px 22px;border-top:1px solid var(--rule);position:relative}
-  .needs li:before{content:"";position:absolute;left:2px;top:14px;width:9px;height:9px;border-radius:2px;border:2px solid var(--celebration)}
-  .btn{
-    border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:10px;
-    padding:8px 12px;font:600 13.5px var(--body);cursor:pointer
-  }
-  .btn{display:inline-block;text-decoration:none;line-height:1.3}
-  .btn.solid{background:var(--ink);color:#F2F7F3;border-color:var(--ink)}
+  .ev .t b{display:block;font-family:var(--display);font-weight:800;font-size:17.5px;
+           line-height:1.14;letter-spacing:-.01em}
+  .meta{font-size:13px;color:var(--ink-soft);margin-top:3px}
+  .flag{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-top:8px}
+  .flag.help{background:var(--c);color:#fff}
+  .flag.tbd{background:transparent;color:var(--ink-soft);border:1.5px dashed var(--rule);margin-left:5px}
+  .body{padding:0 14px 15px 63px;font-size:14.5px}
+  .body p{margin:0 0 11px}
+  .needs{margin:0 0 13px;padding:0;list-style:none}
+  .needs li{padding:8px 0 8px 24px;border-top:1px solid rgba(21,34,74,.12);position:relative}
+  .needs li:first-child{border-top:0}
+  .needs li:before{content:"";position:absolute;left:1px;top:15px;width:10px;height:10px;
+    border-radius:2px;border:2px solid var(--c)}
+  .btn{display:inline-block;border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+    border-radius:999px;padding:7px 14px;font:600 13.5px var(--body);cursor:pointer;
+    text-decoration:none;line-height:1.3}
+  .btn.solid{background:var(--ink);color:var(--paper)}
   .btnrow{display:flex;gap:8px;flex-wrap:wrap}
 
-  /* ---------- class fund receipt ---------- */
-  .ledger{position:relative;background:var(--card);padding:20px 18px 22px;box-shadow:var(--shadow);
-          border-radius:16px 16px 2px 2px;overflow:visible}
+  /* ================= class fund receipt ================= */
+  .ledger{position:relative;background:var(--card);padding:20px 18px 24px;box-shadow:var(--lift);
+          border-radius:4px 4px 0 0}
   .ledger:after{content:"";position:absolute;left:0;right:0;bottom:-11px;height:12px;
     background:linear-gradient(135deg,var(--card) 33.33%,transparent 0),
                linear-gradient(-135deg,var(--card) 33.33%,transparent 0);
     background-size:18px 12px;background-repeat:repeat-x}
-  .ledger .kick{font:600 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;
-                text-transform:uppercase;color:var(--ink-soft)}
-  .ledger .rule{border:0;border-top:1px dashed var(--rule);margin:12px 0 14px}
-  .ledger h4{font-family:var(--display);font-weight:800;font-size:21px;line-height:1.12;margin:0 0 8px}
-  .ledger p{margin:0 0 14px;font-size:14.5px}
-  .ledger .stamp{display:inline-block;transform:rotate(-3deg);border:2px solid var(--teacher);
-    color:var(--teacher);border-radius:6px;padding:5px 10px;margin-bottom:12px;
-    font:700 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase}
-  .ledger a.open{display:inline-block;background:var(--ink);color:#F2F7F3;text-decoration:none;
-    border-radius:10px;padding:11px 15px;font:600 14.5px var(--body)}
+  .ledger h4{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.08;
+             letter-spacing:-.02em;margin:0 0 10px;max-width:18ch}
+  .ledger p{margin:0 0 16px;font-size:14.5px}
+  .ledger .stamp{display:inline-block;transform:rotate(-3.5deg);border:2.5px solid var(--pink);
+    color:var(--pink);border-radius:4px;padding:6px 11px;margin-bottom:14px;
+    font:700 13px var(--display);letter-spacing:.01em}
+  .ledger .rule{border:0;border-top:2px dashed var(--rule);margin:0 0 15px}
+  .chain{display:flex;flex-wrap:wrap;margin:18px 0 12px;padding-left:5px}
+  .chain .lk{width:42px;height:26px;border:4px solid var(--lc,#CBBFA8);border-radius:999px;
+    margin:0 -10px 7px 0;background:transparent}
+  .chain .lk.full{background:var(--lc)}
+  .chain .lk.part{background:linear-gradient(90deg,var(--lc) var(--p),transparent 0)}
+  .chain .lk.empty{border-style:dashed}
+  .ledger p.tally{margin:0 0 5px;font-family:var(--display);font-weight:800;font-size:29px;
+    line-height:1.03;letter-spacing:-.025em}
+  .ledger p.tally .of{color:var(--ink-soft);font-weight:500;font-size:22px}
+  .ledger p.tally-note{margin:0 0 17px;font-size:13.5px;color:var(--ink-soft);max-width:34ch}
+  .ledger a.open{display:inline-block;background:var(--pink);color:#fff;text-decoration:none;
+    border-radius:999px;padding:11px 18px;font:600 14.5px var(--body)}
 
-  /* ---------- teachers ---------- */
-  .fav{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow);margin-bottom:8px}
-  .fav b{font-family:var(--display);font-size:16.5px}
-  .fav .role{font-size:13px;color:var(--ink-soft);margin-bottom:8px}
-  .fav dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:14px}
+  /* ================= teachers ================= */
+  .fav{background:var(--card);border-radius:4px;padding:16px;box-shadow:var(--lift);margin-bottom:10px;
+       border-top:7px solid var(--c)}
+  .fav:nth-of-type(1){--c:var(--pink)}
+  .fav:nth-of-type(2){--c:var(--teal)}
+  .fav:nth-of-type(3){--c:var(--gold)}
+  .fav b{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em}
+  .fav .role{font-size:13px;color:var(--ink-soft);margin:2px 0 11px}
+  .fav dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14.5px}
   .fav dt{color:var(--ink-soft)}
   .fav dd{margin:0}
 
-  /* ---------- footer / tools ---------- */
-  footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--ink-soft)}
-  .toolbox{margin-top:14px;background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
-  .toolbox summary{font:700 15px var(--display);cursor:pointer}
-  textarea{
-    width:100%;min-height:260px;margin-top:10px;border:1px solid var(--rule);border-radius:10px;padding:10px;
-    font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);background:#FBFDFB;resize:vertical
-  }
-  .status{font-size:13px;margin-top:8px;min-height:18px}
-  .status.bad{color:#A33}
-  .status.good{color:var(--teacher)}
-  .toast{
-    position:fixed;left:50%;transform:translateX(-50%);bottom:22px;background:var(--ink);color:#F2F7F3;
-    padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .18s
-  }
+  /* ================= footer ================= */
+  footer{margin-top:42px;padding-top:18px;border-top:2px solid var(--rule);font-size:13.5px;color:var(--ink-soft)}
+  .toolbox{margin-top:16px;background:var(--card);border-radius:4px;padding:16px;box-shadow:var(--lift)}
+  .toolbox summary{font:700 16px var(--display);color:var(--ink);cursor:pointer}
+  textarea{width:100%;min-height:260px;margin-top:10px;border:1.5px solid var(--rule);border-radius:3px;
+    padding:11px;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);
+    background:var(--paper);resize:vertical}
+  .status{font-size:13.5px;margin-top:10px;min-height:18px}
+  .status.bad{color:#C02A4E}
+  .status.good{color:var(--teal)}
+  .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;background:var(--ink);color:#fff;
+    padding:11px 18px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;
+    transition:opacity .18s;z-index:20}
   .toast.show{opacity:1}
+
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   @media print{
-    .filters,.toolbox,.btnrow,.top{display:none}
+    .filters,.toolbox,.btnrow,.top,.signup{display:none}
     body{background:#fff}
-    .ev[open] .body,.ev .body{display:block}
-    .ev,.money,.fav{box-shadow:none;border:1px solid #ccc}
+    body:before{display:none}
+    .ev,.ledger,.fav,.call{box-shadow:none;border:1px solid #bbb}
   }
 </style>
 </head>
 <body>
 
-<div class="top">
+<header class="top">
+  <div class="ink ink-a"></div><div class="ink ink-b"></div>
+  <div class="dots"></div>
   <div class="wrap">
-    <p class="kicker">Westerly · Room 2 · Ms. Mejia &amp; Ms. Blancarte</p>
-    <h1>Second Grade,<br>all year long</h1>
-    <p class="sub">Every class celebration, field study and sign-up in one place. Tap anything to see what it needs.</p>
+    <h1>Second grade, all year long</h1>
+    <p class="sub">Room 2 at Westerly, with Ms. Mejia and Ms. Blancarte. Every celebration, trip and sign-up in one place.</p>
   </div>
-</div>
+</header>
 
 <div class="wrap">
 
@@ -192,7 +230,7 @@
 
   <section>
     <h3>The year at a glance</h3>
-    <p class="lede">Dates marked <em>to be confirmed</em> are still moving — we'll update this page as they lock in.</p>
+    <p class="lede">Dates still being confirmed are marked. Tap an event to see what it needs.</p>
     <div class="filters" id="filters" role="group" aria-label="Filter events"></div>
     <div id="events"></div>
   </section>
@@ -217,9 +255,9 @@
 
     <details class="toolbox">
       <summary>Room parent tools</summary>
-      <p style="font-size:13.5px;color:var(--ink-soft);margin:8px 0 0">
+      <p style="font-size:13.5px;color:var(--ink-soft);margin:10px 0 0">
         Edit the class data below, press <b>Preview changes</b> to check it on the page, then
-        <b>Download updated page</b> to get a new file to re-share. Nothing is saved automatically.
+        <b>Download updated page</b> to get a new file to publish. Nothing saves automatically.
       </p>
       <textarea id="editor" spellcheck="false" aria-label="Class data"></textarea>
       <div class="btnrow">
@@ -237,16 +275,16 @@
 <script id="class-data" type="application/json">
 {
   "meta": {
-    "className": "2nd Grade — Room 2",
+    "className": "2nd Grade, Room 2",
     "school": "Westerly",
     "year": "2026–27",
-    "roomParents": "Gus and your co-room parent",
+    "roomParents": "Gustavo and Tiffany",
     "contact": "Reply in the class WhatsApp group and we'll pick it up.",
     "updated": "2026-09-12",
     "pinText": "📌 2nd Grade Class Hub 2026–27 — every celebration, field study and volunteer ask in one page. Open the attached file and save it to your home screen.\n\nTwo things Ms. Mejia is asking for now:\n• Parents to teach a life skills segment — anything from your work or a hobby\n• Two helpers for Halloween bag making on Fri Oct 30\n\nThe year's big dates:\n• Fri Oct 30 — Halloween parade, kids make their own bags\n• Fri Dec 18 — Winter celebration and hot cocoa stand\n• Fri Feb 12 — Valentine's, five centers\n• Thu Jun 10 — Beach Day\n• Two field studies, drivers needed — the end-of-year one is a mentor and mentee trip to the space center in Downey"
   },
   "signup": {
-    "url": "https://docs.google.com/document/d/1jlxpEYhxINxBfMU4zdwXS1i5P2tpYkHI/edit",
+    "url": "https://docs.google.com/document/d/1Rf6DIeyLMpslN7qVXyF3JHCEUC9I0jia/edit",
     "label": "Volunteer sign-up sheet",
     "blurb": "One sheet for the whole year — add your name next to whatever you can take on."
   },
@@ -260,21 +298,23 @@
       "title": "The volunteer sign-up sheet is live",
       "body": "One sheet covering every celebration, same format as last year, so you can pick your spots in a single sitting instead of answering a dozen separate asks.",
       "action": "Open the sign-up sheet",
-      "url": "https://docs.google.com/document/d/1jlxpEYhxINxBfMU4zdwXS1i5P2tpYkHI/edit"
+      "url": "https://docs.google.com/document/d/1Rf6DIeyLMpslN7qVXyF3JHCEUC9I0jia/edit"
     }
   ],
   "fund": {
-    "kicker": "Class fund · open books",
-    "stamp": "One ask, all year",
-    "headline": "Every dollar is on one sheet, and you can see it any time.",
-    "body": "The fund pays for class celebrations, field study snacks, mentor gifts, end-of-year gifts, and thank-yous for our teachers. We collect once in September and try hard not to come back for more. The tracker is live — what came in, what went out, what's left.",
+    "stamp": "one ask, all year",
+    "headline": "A paper chain of seventeen, one link per family.",
+    "goal": 1700,
+    "raised": 1250,
+    "perLink": 100,
+    "body": "The fund covers class celebrations, field study snacks, mentor gifts, end-of-year gifts, and thank-yous for our teachers. We collect once in September and try hard not to come back for more. Every dollar in and out is on the tracker.",
     "linkLabel": "Open the live tracker",
     "url": "https://docs.google.com/spreadsheets/d/14SR4aytAs5Dm0ckS7-S5wXpMs9KAeILj/edit?gid=2072415431#gid=2072415431"
   },
   "teachers": [
     {
       "name": "Ms. Raquel Mejia",
-      "role": "2nd grade teacher · birthday Dec 2",
+      "role": "2nd grade teacher, birthday Dec 2",
       "favs": {
         "Coffee": "Horchata cold brew from Tierra Mia",
         "Cold drink": "Strawberry lemonade",
@@ -286,7 +326,7 @@
     },
     {
       "name": "Ms. Rachel Blancarte",
-      "role": "2nd grade TA · birthday Feb 26",
+      "role": "2nd grade TA, birthday Feb 26",
       "favs": {
         "Coffee": "White chocolate mocha from Starbucks",
         "Cold drink": "Lemonade, Dr. Pepper, sweet iced tea",
@@ -298,7 +338,7 @@
     },
     {
       "name": "Ms. María Mannanal",
-      "role": "Art teacher · birthday May 21",
+      "role": "Art teacher, birthday May 21",
       "favs": {
         "Coffee": "Mocha Mexicano, half flavors, oat milk — Tierra Mia",
         "Cold drink": "Iced tea",
@@ -538,12 +578,16 @@
   var filter = 'all';
 
   var TYPES = {
-    celebration:{label:'Class celebrations', color:'var(--celebration)'},
-    birthday:{label:'Birthdays', color:'var(--birthday)'},
-    gift:{label:'Prep and gifts', color:'var(--gift)'},
-    trip:{label:'Field studies', color:'var(--trip)'},
-    teacher:{label:'Our teachers', color:'var(--teacher)'},
-    school:{label:'School-wide', color:'var(--school)'}
+    celebration:{label:'class celebration', color:'#FF4F9A', tint:'#FFEDF5'},
+    birthday:{label:'birthday', color:'#F5A623', tint:'#FFF5E4'},
+    gift:{label:'making and prep', color:'#7B5BE0', tint:'#F1EDFD'},
+    trip:{label:'field study', color:'#00A18C', tint:'#E3F6F3'},
+    teacher:{label:'our teachers', color:'#2358C9', tint:'#E9EFFD'},
+    school:{label:'school-wide', color:'#66738F', tint:'#EEF0F5'}
+  };
+  var FILTER_LABELS = {
+    celebration:'Celebrations', birthday:'Birthdays', gift:'Making and prep',
+    trip:'Field studies', teacher:'Our teachers', school:'School-wide'
   };
   var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
   var SHORT=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -563,23 +607,50 @@
   function renderNext(){
     var now=today(), up=sorted().filter(function(e){return parse(e.date)>=now;});
     var box=document.getElementById('nextup');
-    if(!up.length){box.innerHTML='<p class="when">That\'s a wrap</p><h2>Have a wonderful summer</h2>';return;}
+    if(!up.length){
+      box.innerHTML='<div class="bar"></div><div class="pad"><p class="when">That\'s a wrap</p>'+
+        '<h2>Have a wonderful summer</h2></div>';return;
+    }
     var e=up[0], d=parse(e.date), days=Math.round((d-now)/86400000);
-    var when=DAYS[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate();
+    var when=DAYS[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+(e.status==='tbd'?', still being confirmed':'');
     var ask=(e.needs&&e.needs.length)
-      ? '<p class="ask"><strong>What we need:</strong> '+esc(e.needs[0])+(e.needs.length>1?' &middot; and '+(e.needs.length-1)+' more below':'')+'</p>'
-      : '<p class="ask">Nothing needed from families — just come ready to celebrate.</p>';
-    box.style.setProperty('--celebration',TYPES[e.type].color);
-    box.innerHTML='<p class="when">Next up &middot; '+esc(when)+(e.status==='tbd'?' (to be confirmed)':'')+'</p>'+
+      ? '<p class="ask"><b>What we need:</b> '+esc(e.needs[0])+(e.needs.length>1?', and '+(e.needs.length-1)+' more below':'')+'</p>'
+      : '<p class="ask">Nothing needed from families, just come ready to celebrate.</p>';
+    box.style.setProperty('--c',TYPES[e.type].color);
+    box.innerHTML='<div class="bar"></div><div class="pad">'+
+      '<p class="when">Next up, '+esc(when)+'</p>'+
       '<h2>'+esc(e.title)+'</h2>'+ask+
-      '<p class="countdown">'+(days===0?'Today':days===1?'Tomorrow':'In '+days+' days')+'</p>';
+      '<p class="days">'+(days===0?'Today':days===1?'Tomorrow':'In '+days+' days')+'</p></div>';
+  }
+
+  /* ---------- sign-up banner ---------- */
+  function renderSignup(){
+    var s=data.signup||{}, slot=document.getElementById('signup-slot');
+    if(!s.url){slot.innerHTML='';return;}
+    slot.innerHTML='<a class="signup" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+
+      '<span class="dots"></span>'+
+      '<b>'+esc(s.label||'Volunteer sign-up sheet')+'</b>'+
+      (s.blurb?'<span class="note">'+esc(s.blurb)+'</span>':'')+
+      '<span class="go">Open the sign-up sheet</span></a>';
+  }
+
+  /* ---------- callouts ---------- */
+  function renderCallouts(){
+    var list=data.callouts||[];
+    document.getElementById('callouts-wrap').style.display=list.length?'':'none';
+    document.getElementById('callouts').innerHTML=list.map(function(c){
+      var act=c.action?(c.url
+        ? '<p class="act"><a href="'+esc(c.url)+'" target="_blank" rel="noopener">'+esc(c.action)+'</a></p>'
+        : '<p class="act">'+esc(c.action)+'</p>'):'';
+      return '<div class="call"><b>'+esc(c.title)+'</b><p>'+esc(c.body)+'</p>'+act+'</div>';
+    }).join('');
   }
 
   /* ---------- filters ---------- */
   function renderFilters(){
     var el=document.getElementById('filters');
     var opts=[['all','Everything'],['help','Needs a hand']];
-    Object.keys(TYPES).forEach(function(k){opts.push([k,TYPES[k].label]);});
+    Object.keys(TYPES).forEach(function(k){opts.push([k,FILTER_LABELS[k]]);});
     el.innerHTML=opts.map(function(o){
       return '<button class="chip" data-f="'+o[0]+'" aria-pressed="'+(filter===o[0])+'">'+esc(o[1])+'</button>';
     }).join('');
@@ -587,7 +658,6 @@
       b.onclick=function(){filter=b.dataset.f;renderFilters();renderEvents();};
     });
   }
-
   function match(e){
     if(filter==='all')return true;
     if(filter==='help')return !!(e.needs&&e.needs.length);
@@ -598,12 +668,12 @@
   function renderEvents(){
     var now=today(), list=sorted().filter(function(e){return parse(e.date)>=now && match(e);});
     var host=document.getElementById('events');
-    if(!list.length){host.innerHTML='<p class="lede">Nothing left in that category this year.</p>';return;}
+    if(!list.length){host.innerHTML='<p class="lede">Nothing left in that group this year.</p>';return;}
     var html='',lastMonth='';
     list.forEach(function(e,i){
       var d=parse(e.date),key=MONTHS[d.getMonth()]+' '+d.getFullYear();
       if(key!==lastMonth){html+='<p class="month">'+esc(key)+'</p>';lastMonth=key;}
-      var c=TYPES[e.type].color;
+      var T=TYPES[e.type];
       if(e.type==='birthday'&&!(e.needs&&e.needs.length)){
         html+='<div class="row"><span class="rd">'+SHORT[d.getMonth()]+' '+d.getDate()+'</span>'+
           '<span class="rn">'+esc(e.title)+'</span>'+
@@ -611,12 +681,12 @@
         return;
       }
       var flags='';
-      if(e.needs&&e.needs.length)flags+='<span class="flag help">'+e.needs.length+' way'+(e.needs.length>1?'s':'')+' to help</span> ';
-      if(e.status==='tbd')flags+='<span class="flag tbd">date to be confirmed</span>';
-      html+='<details class="ev" data-i="'+i+'"><summary>'+
+      if(e.needs&&e.needs.length)flags+='<span class="flag help">'+e.needs.length+' way'+(e.needs.length>1?'s':'')+' to help</span>';
+      if(e.status==='tbd')flags+='<span class="flag tbd">date not set</span>';
+      html+='<details class="ev" style="--c:'+T.color+';--tint:'+T.tint+'"><summary>'+
         '<span class="date"><span class="d">'+d.getDate()+'</span><span class="m">'+SHORT[d.getMonth()]+'</span></span>'+
         '<span class="t"><b>'+esc(e.title)+'</b>'+
-        '<span class="meta"><span class="dot" style="background:'+c+'"></span>'+DAYS[d.getDay()]+' &middot; '+TYPES[e.type].label+'</span>'+
+        '<span class="meta">'+DAYS[d.getDay()]+', '+T.label+'</span>'+
         (flags?'<br>'+flags:'')+'</span></summary>'+
         '<div class="body">'+
         (e.blurb?'<p>'+esc(e.blurb)+'</p>':'')+
@@ -630,46 +700,38 @@
     });
   }
 
-  /* ---------- money ---------- */
-  function signupLink(title){
-    var s=data.signup||{};
-    if(!s.url)return '';
-    var u=s.url;
-    if(s.prefillParam)u+=(u.indexOf('?')>-1?'&':'?')+s.prefillParam+'='+encodeURIComponent(title);
-    return u;
-  }
-  function renderSignup(){
-    var s=data.signup||{}, slot=document.getElementById('signup-slot');
-    if(!s.url){slot.innerHTML='';return;}
-    slot.innerHTML='<a class="signup" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+
-      '<b>'+esc(s.label||'Volunteer sign-up sheet')+'</b>'+
-      (s.blurb?'<span>'+esc(s.blurb)+'</span>':'')+
-      '<span class="go">Open the sign-up sheet &rarr;</span></a>';
-  }
-
-  function renderCallouts(){
-    var list=data.callouts||[];
-    document.getElementById('callouts-wrap').style.display=list.length?'':'none';
-    document.getElementById('callouts').innerHTML=list.map(function(c){
-      var act=c.action?(c.url
-        ? '<p class="act"><a href="'+esc(c.url)+'" target="_blank" rel="noopener" style="color:inherit">'+esc(c.action)+' &rarr;</a></p>'
-        : '<p class="act">'+esc(c.action)+'</p>'):'';
-      return '<div class="call"><b>'+esc(c.title)+'</b><p>'+esc(c.body)+'</p>'+act+'</div>';
-    }).join('');
+  /* ---------- class fund ---------- */
+  function chain(f){
+    var per=f.perLink||100, goal=f.goal||0, raised=f.raised||0;
+    if(!goal)return '';
+    var inks=['#FF4F9A','#F5A623','#00A18C','#7B5BE0','#2358C9'];
+    var total=Math.ceil(goal/per), done=raised/per, out='';
+    for(var i=0;i<total;i++){
+      var c=inks[i%inks.length];
+      if(i+1<=done)      out+='<span class="lk full" style="--lc:'+c+'"></span>';
+      else if(i<done)    out+='<span class="lk part" style="--lc:'+c+';--p:'+Math.round((done-i)*100)+'%"></span>';
+      else               out+='<span class="lk empty"></span>';
+    }
+    var money=function(n){return '$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:0});};
+    var left=Math.max(0,goal-raised);
+    return '<div class="chain">'+out+'</div>'+
+      '<p class="tally">'+money(raised)+' <span class="of">of '+money(goal)+'</span></p>'+
+      '<p class="tally-note">'+(left>0
+        ? 'Each link is one family chipping in ' + money(per) + '. ' + money(left) + ' to go.'
+        : 'Every link is filled. Thank you.')+'</p>';
   }
 
-  /* ---------- money ---------- */
   function renderFund(){
     var f=data.fund||{};
     document.getElementById('fund').innerHTML=
       '<div class="ledger">'+
-      '<p class="kick">'+esc(f.kicker||'Class fund')+'</p>'+
-      '<hr class="rule">'+
       (f.stamp?'<div class="stamp">'+esc(f.stamp)+'</div>':'')+
+      '<hr class="rule">'+
       '<h4>'+esc(f.headline||'')+'</h4>'+
+      chain(f)+
       '<p>'+esc(f.body||'')+'</p>'+
       (f.url?'<a class="open" href="'+esc(f.url)+'" target="_blank" rel="noopener">'+
-        esc(f.linkLabel||'Open the tracker')+' &rarr;</a>':'')+
+        esc(f.linkLabel||'Open the tracker')+'</a>':'')+
       '</div>';
   }
 
@@ -684,9 +746,8 @@
 
   function renderFoot(){
     var m=data.meta;
-    document.getElementById('foot-note').innerHTML=
-      esc(m.className)+' at '+esc(m.school)+' &middot; '+esc(m.year)+'. Kept by '+esc(m.roomParents)+
-      '. Last updated '+esc(m.updated)+'.';
+    document.getElementById('foot-note').textContent=
+      m.className+' at '+m.school+', '+m.year+'. Kept by '+m.roomParents+'. Last updated '+m.updated+'.';
   }
 
   /* ---------- calendar ---------- */
@@ -713,14 +774,12 @@
     L.push('END:VCALENDAR');
     save(L.join('\r\n'),(name||'class-calendar').replace(/[^\w\- ]/g,'').slice(0,40)+'.ics','text/calendar');
   }
-
   function save(text,filename,mime){
     var b=new Blob([text],{type:mime+';charset=utf-8'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(b);a.download=filename;document.body.appendChild(a);a.click();
     setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1500);
   }
-
   function copy(text){
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text);return;}
     var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);
@@ -731,20 +790,19 @@
   function wireTools(){
     var ed=document.getElementById('editor'), st=document.getElementById('status');
     ed.value=JSON.stringify(data,null,2);
-
     document.getElementById('preview').onclick=function(){
       try{
         var next=JSON.parse(ed.value);
-        if(!next.events||!next.events.length)throw new Error('No events found — the list is empty.');
+        if(!next.events||!next.events.length)throw new Error('the event list is empty.');
         data=next;renderAll();
         st.className='status good';st.textContent='Looks good. The page above now shows your changes.';
       }catch(err){
-        st.className='status bad';st.textContent='That is not valid data yet: '+err.message;
+        st.className='status bad';st.textContent='Not valid data yet: '+err.message;
       }
     };
     document.getElementById('revert').onclick=function(){
       data=JSON.parse(DEFAULT_JSON);ed.value=JSON.stringify(data,null,2);renderAll();
-      st.className='status';st.textContent='Back to the version this file was shared with.';
+      st.className='status';st.textContent='Back to the published version.';
     };
     document.getElementById('download').onclick=function(){
       var body;
@@ -755,8 +813,8 @@
       var j=ORIGINAL_HTML.indexOf('</scr'+'ipt>',i);
       if(i<0||j<0){st.className='status bad';st.textContent='Could not rebuild the file. Edit the data block in the HTML directly.';return;}
       var out=ORIGINAL_HTML.slice(0,i+open.length)+'\n'+body+'\n'+ORIGINAL_HTML.slice(j);
-      save(out,'2nd-Grade-Class-Hub.html','text/html');
-      st.className='status good';st.textContent='Downloaded. Share that file in the group and pin the message.';
+      save(out,'index.html','text/html');
+      st.className='status good';st.textContent='Downloaded as index.html. Upload it to the repo to publish.';
     };
     document.getElementById('copy-pin').onclick=function(){
       copy(data.meta.pinText);toast('Pin text copied');
