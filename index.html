@@ -180,6 +180,10 @@
   .fav:nth-of-type(1){--c:var(--pink)}
   .fav:nth-of-type(2){--c:var(--teal)}
   .fav:nth-of-type(3){--c:var(--gold)}
+  .fav:nth-of-type(4){--c:var(--blue)}
+  .fav.todo{background:transparent;box-shadow:none;border:2px dashed var(--rule);border-top:7px solid var(--c)}
+  .fav.todo .pending{font-size:14px;margin:0 0 14px;color:var(--ink-soft);max-width:36ch}
+  .fav.todo dd{border-bottom:2px dotted #CDBFA6;min-height:1.15em}
   .fav b{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em}
   .fav .role{font-size:13px;color:var(--ink-soft);margin:2px 0 11px}
   .fav dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14.5px}
@@ -317,40 +321,74 @@
   },
   "teachers": [
     {
-      "name": "Ms. Raquel Mejia",
+      "name": "Ms. Mejia",
       "role": "2nd grade teacher, birthday Dec 2",
       "favs": {
         "Coffee": "Horchata cold brew from Tierra Mia",
         "Cold drink": "Strawberry lemonade",
-        "Treat": "Red velvet cupcake or Reese's",
+        "Treat": "Red velvet cupcake, or Reese's peanut butter cups",
+        "Restaurant": "Ola",
+        "Salad": "BBQ chicken salad",
+        "Sandwich": "Avocado turkey",
         "Flowers": "Carnations",
+        "Shops": "Abercrombie & Fitch",
         "Gift cards": "Target, Walmart, Amazon, American Eagle",
-        "Color": "Red, and anything spotted print"
+        "Colors": "Red, and spotted print (which she notes is not the same as polka dot)",
+        "Happy place": "The beach, a book, or a shopping trip"
       }
     },
     {
-      "name": "Ms. Rachel Blancarte",
+      "name": "Ms. Blancarte",
       "role": "2nd grade TA, birthday Feb 26",
       "favs": {
         "Coffee": "White chocolate mocha from Starbucks",
         "Cold drink": "Lemonade, Dr. Pepper, sweet iced tea",
         "Treat": "Sour or gummy candy, cookie dough ice cream",
+        "Restaurant": "CPK, Awesome Sushi, Bai Plu",
+        "Salad": "Chinese chicken salad",
+        "Sandwich": "Subway on Italian bread: mayo, lettuce, shredded cheese, cucumber, spinach, ranch, salt and pepper",
         "Flowers": "Any",
+        "Shops": "Old Navy, Target",
         "Gift cards": "Amazon, Target",
-        "Color": "Lavender, pink, light blue"
+        "Colors": "Lavender, pink, light blue",
+        "Happy place": "Walks with friends, movies, travel"
       }
     },
     {
-      "name": "Ms. María Mannanal",
+      "name": "Ms. Mannanal",
       "role": "Art teacher, birthday May 21",
       "favs": {
         "Coffee": "Mocha Mexicano, half flavors, oat milk, from Tierra Mia",
         "Cold drink": "Iced tea",
         "Treat": "Dark chocolate",
+        "Restaurant": "Eats everything, but bring on the noodles",
+        "Salad": "Lola's Mexican avocado and mango salad",
+        "Sandwich": "Mainly pescatarian, so fish or veggie",
         "Flowers": "Peonies and iris",
+        "Shops": "Free People, Nordstrom Rack, lululemon, Nike, adidas",
         "Gift cards": "Target, Michael's, anywhere to eat",
-        "Color": "Teal, yellow, ochre, soft pink and grey"
+        "Colors": "Teal, yellow, ochre, soft pinks and greys",
+        "Happy place": "Hiking, workouts, museums, tea, movies, sporting events"
       }
+    },
+    {
+      "name": "Mrs. Ayala",
+      "role": "Spanish teacher",
+      "pending": true,
+      "note": "We've handed her the same list of questions. Her answers land right here the moment they come back, so check again before her birthday.",
+      "awaiting": [
+        "Coffee",
+        "Cold drink",
+        "Treat",
+        "Restaurant",
+        "Salad",
+        "Sandwich",
+        "Flowers",
+        "Shops",
+        "Gift cards",
+        "Colors",
+        "Happy place"
+      ]
     }
   ],
   "events": [
@@ -789,6 +827,12 @@
   /* ---------- teachers ---------- */
   function renderTeachers(){
     document.getElementById('teachers').innerHTML=data.teachers.map(function(t){
+      if(t.pending){
+        return '<div class="fav todo"><b>'+esc(t.name)+'</b><div class="role">'+esc(t.role)+'</div>'+
+          '<p class="pending">'+esc(t.note||'')+'</p><dl>'+
+          (t.awaiting||[]).map(function(k){return '<dt>'+esc(k)+'</dt><dd></dd>';}).join('')+
+          '</dl></div>';
+      }
       return '<div class="fav"><b>'+esc(t.name)+'</b><div class="role">'+esc(t.role)+'</div><dl>'+
         Object.keys(t.favs).map(function(k){return '<dt>'+esc(k)+'</dt><dd>'+esc(t.favs[k])+'</dd>';}).join('')+
         '</dl></div>';
