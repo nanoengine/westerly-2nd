@@ -137,6 +137,10 @@
   .needs li:first-child{border-top:0}
   .needs li:before{content:"";position:absolute;left:1px;top:15px;width:10px;height:10px;
     border-radius:2px;border:2px solid var(--c)}
+  .needs li.done{color:var(--ink-soft)}
+  .needs li.done:before{background:var(--c)}
+  .needs li .fl{font-size:12px;font-weight:600;color:var(--c);white-space:nowrap}
+  .flag.full{background:transparent;color:var(--c);border:1.5px solid var(--c)}
   .btn{display:inline-block;border:1.5px solid var(--ink);background:transparent;color:var(--ink);
     border-radius:999px;padding:7px 14px;font:600 13.5px var(--body);cursor:pointer;
     text-decoration:none;line-height:1.3}
@@ -376,7 +380,10 @@
       "title": "Halloween parade",
       "blurb": "The school-wide parade is the main event — there's no separate class party. In the classroom beforehand, the kids decorate their own trick-or-treat bags.",
       "needs": [
-        "Two parents to hand out candy during the parade",
+        {
+          "what": "Two parents to hand out candy during the parade",
+          "filled": true
+        },
         "Wrapped candy donations — about 500 pieces",
         "Bags for the kids to decorate"
       ]
@@ -413,8 +420,14 @@
       "title": "Winter celebration and hot cocoa stand",
       "blurb": "The last Friday before winter break. The class runs a hot cocoa stand, and the kids make ornaments for their mentors.",
       "needs": [
-        "Volunteers to decorate the space beforehand",
-        "Hands on the hot cocoa stand during the celebration",
+        {
+          "what": "Volunteers to decorate the space beforehand",
+          "filled": true
+        },
+        {
+          "what": "Hands on the hot cocoa stand during the celebration",
+          "filled": true
+        },
         "Ornament supplies for the mentor gifts"
       ]
     },
@@ -461,7 +474,10 @@
       "blurb": "Four decorated centers set up around the classroom, plus the Love Monster craft.",
       "needs": [
         "Materials for the four centers — the list comes with the sign-up sheet",
-        "A volunteer at each of the four centers",
+        {
+          "what": "A volunteer at each of the four centers",
+          "filled": true
+        },
         "Love Monster craft prep — cutting and sorting, can be done at home"
       ]
     },
@@ -593,6 +609,15 @@
   var SHORT=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
+  function needsOf(e){
+    return (e.needs||[]).map(function(n){
+      return (typeof n==='string')?{what:n,filled:false}:{what:n.what,filled:!!n.filled};
+    });
+  }
+  function openCount(e){
+    return needsOf(e).filter(function(n){return !n.filled;}).length;
+  }
+
   function parse(d){var p=d.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function today(){var t=new Date();return new Date(t.getFullYear(),t.getMonth(),t.getDate());}
@@ -613,9 +638,15 @@
     }
     var e=up[0], d=parse(e.date), days=Math.round((d-now)/86400000);
     var when=DAYS[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+(e.status==='tbd'?', still being confirmed':'');
-    var ask=(e.needs&&e.needs.length)
-      ? '<p class="ask"><b>What we need:</b> '+esc(e.needs[0])+(e.needs.length>1?', and '+(e.needs.length-1)+' more below':'')+'</p>'
-      : '<p class="ask">Nothing needed from families, just come ready to celebrate.</p>';
+    var op=needsOf(e).filter(function(n){return !n.filled;});
+    var ask;
+    if(op.length){
+      ask='<p class="ask"><b>What we need:</b> '+esc(op[0].what)+(op.length>1?', and '+(op.length-1)+' more below':'')+'</p>';
+    }else if((e.needs||[]).length){
+      ask='<p class="ask"><b>Every spot is filled.</b> Thank you to everyone who signed up.</p>';
+    }else{
+      ask='<p class="ask">Nothing needed from families, just come ready to celebrate.</p>';
+    }
     box.style.setProperty('--c',TYPES[e.type].color);
     box.innerHTML='<div class="bar"></div><div class="pad">'+
       '<p class="when">Next up, '+esc(when)+'</p>'+
@@ -660,7 +691,7 @@
   }
   function match(e){
     if(filter==='all')return true;
-    if(filter==='help')return !!(e.needs&&e.needs.length);
+    if(filter==='help')return openCount(e)>0;
     return e.type===filter;
   }
 
@@ -680,8 +711,10 @@
           '<span class="rw">'+DAYS[d.getDay()].slice(0,3)+'</span></div>';
         return;
       }
-      var flags='';
-      if(e.needs&&e.needs.length)flags+='<span class="flag help">'+e.needs.length+' way'+(e.needs.length>1?'s':'')+' to help</span>';
+      var flags='', ns=needsOf(e), op=openCount(e);
+      if(ns.length)flags+= op>0
+        ? '<span class="flag help">'+op+' way'+(op>1?'s':'')+' to help</span>'
+        : '<span class="flag full">all spots filled</span>';
       if(e.status==='tbd')flags+='<span class="flag tbd">date not set</span>';
       html+='<details class="ev" style="--c:'+T.color+';--tint:'+T.tint+'"><summary>'+
         '<span class="date"><span class="d">'+d.getDate()+'</span><span class="m">'+SHORT[d.getMonth()]+'</span></span>'+
@@ -690,7 +723,10 @@
         (flags?'<br>'+flags:'')+'</span></summary>'+
         '<div class="body">'+
         (e.blurb?'<p>'+esc(e.blurb)+'</p>':'')+
-        (e.needs&&e.needs.length?'<ul class="needs">'+e.needs.map(function(n){return '<li>'+esc(n)+'</li>';}).join('')+'</ul>':'')+
+        (ns.length?'<ul class="needs">'+ns.map(function(n){
+          return '<li'+(n.filled?' class="done"':'')+'>'+esc(n.what)+
+            (n.filled?' <span class="fl">filled</span>':'')+'</li>';
+        }).join('')+'</ul>':'')+
         '<div class="btnrow"><button class="btn" data-ics="'+e.date+'|'+esc(e.title)+'">Add to my calendar</button></div>'+
         '</div></details>';
     });
