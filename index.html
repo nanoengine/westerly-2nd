@@ -58,6 +58,13 @@
   .lede{margin:0 0 14px;color:var(--ink-soft);font-size:14.5px;max-width:56ch}
 
   /* ---------- filters ---------- */
+  /* ---------- signup banner ---------- */
+  .signup{display:block;background:var(--gift);color:#fff;border-radius:16px;padding:15px 17px;
+          text-decoration:none;box-shadow:var(--shadow);margin:0 0 22px}
+  .signup b{display:block;font-family:var(--display);font-weight:800;font-size:18.5px;line-height:1.15}
+  .signup span{display:block;font-size:14px;margin-top:4px;color:#EDE8FA}
+  .signup .go{display:inline-block;margin-top:9px;font-weight:600;font-size:14.5px}
+
   /* ---------- callouts ---------- */
   .call{background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:10px;
         border-left:6px solid var(--gift)}
@@ -167,6 +174,8 @@
 
   <div class="nextup" id="nextup"></div>
 
+  <div id="signup-slot"></div>
+
   <section id="callouts-wrap">
     <h3>Two things we're asking of everyone</h3>
     <div id="callouts"></div>
@@ -228,9 +237,9 @@
     "pinText": "📌 2nd Grade Class Hub 2026–27 — every celebration, field study and volunteer ask in one page. Open the attached file and save it to your home screen.\n\nTwo things Ms. Mejia is asking for now:\n• Parents to teach a life skills segment — anything from your work or a hobby\n• Two helpers for Halloween bag making on Fri Oct 30\n\nThe year's big dates:\n• Fri Oct 30 — Halloween parade, kids make their own bags\n• Fri Dec 18 — Winter celebration and hot cocoa stand\n• Fri Feb 12 — Valentine's, five centers\n• Thu Jun 10 — Beach Day\n• Two field studies, drivers needed — the end-of-year one is a mentor and mentee trip to the space center in Downey"
   },
   "signup": {
-    "url": "",
-    "prefillParam": "",
-    "label": "Sign up to help"
+    "url": "https://docs.google.com/document/d/1jlxpEYhxINxBfMU4zdwXS1i5P2tpYkHI/edit",
+    "label": "Volunteer sign-up sheet",
+    "blurb": "One sheet for the whole year — add your name next to whatever you can take on."
   },
   "callouts": [
     {
@@ -239,9 +248,10 @@
       "action": "Say what you could teach in the group chat"
     },
     {
-      "title": "A sign-up sheet is coming for the whole year",
-      "body": "Same format as last year: one sheet covering every celebration, so you can pick your spots in a single sitting instead of answering a dozen separate asks. We'll post it here and in the group as soon as it's up.",
-      "action": ""
+      "title": "The volunteer sign-up sheet is live",
+      "body": "One sheet covering every celebration, same format as last year, so you can pick your spots in a single sitting instead of answering a dozen separate asks.",
+      "action": "Open the sign-up sheet",
+      "url": "https://docs.google.com/document/d/1jlxpEYhxINxBfMU4zdwXS1i5P2tpYkHI/edit"
     }
   ],
   "fund": {
@@ -468,10 +478,11 @@
       "date": "2027-02-01",
       "type": "teacher",
       "title": "Staff lounge restock",
-      "blurb": "We stock the staff lounge for the teachers.",
+      "blurb": "We stock the staff lounge for the teachers during February. Exact day to be confirmed.",
       "needs": [
         "Snack and drink donations for the lounge"
-      ]
+      ],
+      "status": "tbd"
     },
     {
       "date": "2027-05-13",
@@ -495,11 +506,11 @@
       ]
     },
     {
-      "date": "2027-06-03",
+      "date": "2027-05-14",
       "type": "trip",
       "title": "End-of-year field study — space center in Downey",
       "status": "tbd",
-      "blurb": "A mentor and mentee trip to the space center in Downey. Date still to be confirmed.",
+      "blurb": "A mentor and mentee trip to the space center in Downey, expected around May. Date still to be confirmed.",
       "needs": [
         "Parent drivers",
         "A current driver form on file before the day"
@@ -639,19 +650,12 @@
         '<div class="body">'+
         (e.blurb?'<p>'+esc(e.blurb)+'</p>':'')+
         (e.needs&&e.needs.length?'<ul class="needs">'+e.needs.map(function(n){return '<li>'+esc(n)+'</li>';}).join('')+'</ul>':'')+
-        '<div class="btnrow"><button class="btn" data-ics="'+e.date+'|'+esc(e.title)+'">Add to my calendar</button>'+
-        helpButton(e)+'</div>'+
+        '<div class="btnrow"><button class="btn" data-ics="'+e.date+'|'+esc(e.title)+'">Add to my calendar</button></div>'+
         '</div></details>';
     });
     host.innerHTML=html;
     host.querySelectorAll('[data-ics]').forEach(function(b){
       b.onclick=function(){var p=b.dataset.ics.split('|');downloadICS([{date:p[0],title:p[1]}],p[1]);};
-    });
-    host.querySelectorAll('[data-ask]').forEach(function(b){
-      b.onclick=function(){
-        copy('I can help with: '+b.dataset.ask);
-        toast('Copied — paste it into the group chat');
-      };
     });
   }
 
@@ -663,11 +667,13 @@
     if(s.prefillParam)u+=(u.indexOf('?')>-1?'&':'?')+s.prefillParam+'='+encodeURIComponent(title);
     return u;
   }
-  function helpButton(e){
-    var u=signupLink(e.title);
-    return u
-      ? '<a class="btn solid" href="'+esc(u)+'" target="_blank" rel="noopener">'+esc((data.signup&&data.signup.label)||'Sign up to help')+'</a>'
-      : '<button class="btn" data-ask="'+esc(e.title)+'">I can help with this</button>';
+  function renderSignup(){
+    var s=data.signup||{}, slot=document.getElementById('signup-slot');
+    if(!s.url){slot.innerHTML='';return;}
+    slot.innerHTML='<a class="signup" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+
+      '<b>'+esc(s.label||'Volunteer sign-up sheet')+'</b>'+
+      (s.blurb?'<span>'+esc(s.blurb)+'</span>':'')+
+      '<span class="go">Open the sign-up sheet &rarr;</span></a>';
   }
 
   function renderCallouts(){
@@ -787,7 +793,7 @@
     };
   }
 
-  function renderAll(){renderNext();renderCallouts();renderFilters();renderEvents();renderMoney();renderTeachers();renderFoot();}
+  function renderAll(){renderNext();renderSignup();renderCallouts();renderFilters();renderEvents();renderMoney();renderTeachers();renderFoot();}
   renderAll();wireTools();
 })();
 </script>
