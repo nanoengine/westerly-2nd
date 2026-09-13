@@ -384,8 +384,14 @@
           "what": "Two parents to hand out candy during the parade",
           "filled": true
         },
-        "Wrapped candy donations — about 500 pieces",
-        "Bags for the kids to decorate"
+        {
+          "what": "Wrapped candy donations — about 500 pieces",
+          "filled": true
+        },
+        {
+          "what": "Bags for the kids to decorate",
+          "filled": true
+        }
       ]
     },
     {
@@ -428,7 +434,10 @@
           "what": "Hands on the hot cocoa stand during the celebration",
           "filled": true
         },
-        "Ornament supplies for the mentor gifts"
+        {
+          "what": "Ornament supplies for the mentor gifts",
+          "filled": true
+        }
       ]
     },
     {
@@ -473,12 +482,18 @@
       "title": "Valentine's celebration",
       "blurb": "Four decorated centers set up around the classroom, plus the Love Monster craft.",
       "needs": [
-        "Materials for the four centers — the list comes with the sign-up sheet",
+        {
+          "what": "Materials for the four centers — the list comes with the sign-up sheet",
+          "filled": true
+        },
         {
           "what": "A volunteer at each of the four centers",
           "filled": true
         },
-        "Love Monster craft prep — cutting and sorting, can be done at home"
+        {
+          "what": "Love Monster craft prep — cutting and sorting, can be done at home",
+          "filled": true
+        }
       ]
     },
     {
@@ -643,7 +658,7 @@
     if(op.length){
       ask='<p class="ask"><b>What we need:</b> '+esc(op[0].what)+(op.length>1?', and '+(op.length-1)+' more below':'')+'</p>';
     }else if((e.needs||[]).length){
-      ask='<p class="ask"><b>Every spot is filled.</b> Thank you to everyone who signed up.</p>';
+      ask='<p class="ask"><b>This one is fully covered.</b> Thank you to everyone who signed up.</p>';
     }else{
       ask='<p class="ask">Nothing needed from families, just come ready to celebrate.</p>';
     }
@@ -714,7 +729,7 @@
       var flags='', ns=needsOf(e), op=openCount(e);
       if(ns.length)flags+= op>0
         ? '<span class="flag help">'+op+' way'+(op>1?'s':'')+' to help</span>'
-        : '<span class="flag full">all spots filled</span>';
+        : '<span class="flag full">fully covered</span>';
       if(e.status==='tbd')flags+='<span class="flag tbd">date not set</span>';
       html+='<details class="ev" style="--c:'+T.color+';--tint:'+T.tint+'"><summary>'+
         '<span class="date"><span class="d">'+d.getDate()+'</span><span class="m">'+SHORT[d.getMonth()]+'</span></span>'+
@@ -725,7 +740,7 @@
         (e.blurb?'<p>'+esc(e.blurb)+'</p>':'')+
         (ns.length?'<ul class="needs">'+ns.map(function(n){
           return '<li'+(n.filled?' class="done"':'')+'>'+esc(n.what)+
-            (n.filled?' <span class="fl">filled</span>':'')+'</li>';
+            (n.filled?' <span class="fl">covered</span>':'')+'</li>';
         }).join('')+'</ul>':'')+
         '<div class="btnrow"><button class="btn" data-ics="'+e.date+'|'+esc(e.title)+'">Add to my calendar</button></div>'+
         '</div></details>';
