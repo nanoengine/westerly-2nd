@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2nd Grade at Westerly, Class Hub 2026–27</title>
+<meta name="theme-color" content="#15224A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF6EC;
+    --ink:#15224A;
+    --ink-soft:#5C6684;
+    --card:#FFFFFF;
+    --rule:#E6DECD;
+    --pink:#FF4F9A;
+    --gold:#F5A623;
+    --teal:#00A18C;
+    --violet:#7B5BE0;
+    --blue:#2358C9;
+    --slate:#66738F;
+    --display:"Bricolage Grotesque","Trebuchet MS",Verdana,sans-serif;
+    --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --lift:0 2px 0 rgba(21,34,74,.05), 0 14px 24px -18px rgba(21,34,74,.5);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--body);font-size:15.5px;line-height:1.55;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  /* paper grain over everything */
+  body:before{
+    content:"";position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:660px;margin:0 auto;padding:0 18px 70px}
+
+  /* ================= masthead: overprinted inks ================= */
+  .top{position:relative;background:var(--ink);color:#FDF8F0;padding:32px 0 26px;overflow:hidden;margin-bottom:20px}
+  .top .wrap{padding-bottom:0;position:relative;z-index:2}
+  .top .ink{position:absolute;border-radius:50%;mix-blend-mode:screen;opacity:.62;z-index:0}
+  .ink-a{width:230px;height:230px;background:var(--pink);right:-70px;top:-78px}
+  .ink-b{width:170px;height:170px;background:var(--teal);right:14px;top:22px}
+  .top .dots{position:absolute;inset:0;z-index:1;opacity:.16;color:#fff;
+    background-image:radial-gradient(currentColor 1px,transparent 1.3px);background-size:7px 7px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,10vw,54px);line-height:.94;
+     letter-spacing:-.025em;margin:0 0 12px;max-width:9ch}
+  .top .sub{margin:0;color:#C9D3EA;font-size:15px;max-width:40ch}
+
+  /* ================= next up: the poster ================= */
+  .nextup{position:relative;background:var(--card);border-radius:4px;padding:0 0 18px;
+          box-shadow:var(--lift);margin:-36px 0 26px;overflow:hidden;z-index:3}
+  .nextup .bar{height:9px;background:var(--c,var(--pink))}
+  .nextup .pad{padding:16px 18px 0}
+  .nextup .when{font-family:var(--display);font-weight:700;font-size:14.5px;color:var(--c,var(--pink));margin:0 0 3px}
+  .nextup h2{font-family:var(--display);font-weight:800;font-size:27px;line-height:1.04;
+             letter-spacing:-.015em;margin:0 0 12px}
+  .nextup .ask{margin:0;padding:12px 14px;background:var(--paper);border-radius:3px;font-size:14.5px}
+  .nextup .ask b{font-weight:600}
+  .nextup .days{display:inline-block;margin:13px 0 0;padding:5px 12px;border-radius:999px;
+    background:var(--c,var(--pink));color:#fff;font:700 13px var(--display)}
+
+  /* ================= sections ================= */
+  section{margin:34px 0 0}
+  h3{font-family:var(--display);font-weight:800;font-size:23px;line-height:1.1;letter-spacing:-.015em;
+     margin:0 0 6px;padding-bottom:13px;background-repeat:repeat-x;background-position:left bottom;
+     background-size:104px 9px;
+     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 9'%3E%3Cpath d='M2 6.2q13-6.4 26 0t26 0 26 0 22 0' fill='none' stroke='%23FF4F9A' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E")}
+  .lede{margin:10px 0 16px;color:var(--ink-soft);font-size:14.5px;max-width:52ch}
+
+  /* ================= sign-up ================= */
+  .signup{position:relative;display:block;background:var(--violet);color:#fff;border-radius:4px;
+    padding:18px;text-decoration:none;box-shadow:var(--lift);margin:0 0 26px;overflow:hidden}
+  .signup .dots{position:absolute;inset:0;opacity:.13;color:#fff;
+    background-image:radial-gradient(currentColor 1px,transparent 1.3px);background-size:7px 7px}
+  .signup > *{position:relative}
+  .signup b{display:block;font-family:var(--display);font-weight:800;font-size:21px;line-height:1.08;letter-spacing:-.015em}
+  .signup .note{display:block;font-size:14px;margin-top:5px;color:#EDE6FF;max-width:34ch}
+  .signup .go{display:inline-block;margin-top:12px;background:#fff;color:var(--violet);
+    border-radius:999px;padding:8px 15px;font:600 14px var(--body)}
+
+  /* ================= school calendar strip ================= */
+  .wallcal{display:flex;gap:14px;align-items:center;background:#E3F6F3;border-radius:4px;
+    padding:14px 16px;text-decoration:none;color:var(--ink);margin:0 0 26px;
+    border:2px solid var(--teal)}
+  .cal-ico{flex:0 0 54px;width:54px;height:54px;border-radius:4px;background:#fff;
+    border:2px solid var(--teal);overflow:hidden}
+  .cal-ico .hd{height:14px;background:var(--teal);display:flex;gap:7px;justify-content:center;align-items:flex-end}
+  .cal-ico .hd i{width:3px;height:6px;background:#E3F6F3;border-radius:1px 1px 0 0}
+  .cal-ico .gd{padding:5px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+  .cal-ico .gd i{display:block;height:4px;border-radius:1px;background:#BCE3DB}
+  .cal-ico .gd i.on{background:var(--pink)}
+  .wallcal b{display:block;font-family:var(--display);font-weight:800;font-size:17.5px;
+    line-height:1.12;letter-spacing:-.01em}
+  .wallcal .note{display:block;font-size:13.5px;color:#31665C;margin-top:3px}
+  .wallcal .go{display:inline-block;margin-top:8px;font-weight:600;font-size:14px;color:var(--teal)}
+
+  /* ================= callouts ================= */
+  .call{background:var(--card);border-radius:4px;padding:17px;box-shadow:var(--lift);margin-bottom:12px;
+        border-top:7px solid var(--c)}
+  .call{--c:var(--teal)}
+  .call:nth-child(2){--c:var(--gold)}
+  .call:nth-child(3){--c:var(--pink)}
+  .call:nth-child(4){--c:var(--blue)}
+  .call b{display:block;font-family:var(--display);font-weight:800;font-size:20px;line-height:1.12;
+          letter-spacing:-.015em;margin-bottom:7px}
+  .call p{margin:0;font-size:14.5px}
+  .call .act{margin-top:11px;font-size:14.5px;font-weight:600;color:var(--c)}
+  .call .act a{color:inherit}
+
+  /* ================= filters ================= */
+  .filters{display:flex;gap:7px;overflow-x:auto;padding:4px 0 12px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto;border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+    border-radius:999px;padding:6px 14px;font:500 14px var(--body);cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  .chip:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+
+  /* ================= the year ================= */
+  .month{display:flex;align-items:center;gap:10px;margin:26px 0 10px;
+    font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.01em}
+  .month:after{content:"";flex:1;height:2px;background:var(--rule)}
+
+  /* birthdays: hairline rows */
+  .row{display:flex;gap:11px;align-items:baseline;padding:9px 2px;border-bottom:1px solid var(--rule)}
+  .row .rd{flex:0 0 58px;font-family:var(--display);font-weight:700;font-size:14px;color:var(--gold)}
+  .row .rn{flex:1;font-size:15px}
+  .row .rw{font-size:12.5px;color:var(--ink-soft)}
+
+  /* everything else: tinted ink cards */
+  .ev{background:var(--tint,var(--card));border-radius:4px;margin-bottom:10px;box-shadow:var(--lift);
+      overflow:hidden;border-left:7px solid var(--c)}
+  .ev summary{display:flex;gap:13px;align-items:flex-start;padding:14px;cursor:pointer;list-style:none}
+  .ev summary::-webkit-details-marker{display:none}
+  .date{flex:0 0 50px;height:50px;border-radius:50%;background:var(--c);color:#fff;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-family:var(--display);line-height:1}
+  .date .d{font-weight:800;font-size:19px}
+  .date .m{font-weight:500;font-size:10px;margin-top:2px;opacity:.9}
+  .ev .t{flex:1;min-width:0}
+  .ev .t b{display:block;font-family:var(--display);font-weight:800;font-size:17.5px;
+           line-height:1.14;letter-spacing:-.01em}
+  .meta{font-size:13px;color:var(--ink-soft);margin-top:3px}
+  .flag{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;margin-top:8px}
+  .flag.help{background:var(--c);color:#fff}
+  .flag.tbd{background:transparent;color:var(--ink-soft);border:1.5px dashed var(--rule);margin-left:5px}
+  .body{padding:0 14px 15px 63px;font-size:14.5px}
+  .body p{margin:0 0 11px}
+  .needs{margin:0 0 13px;padding:0;list-style:none}
+  .needs li{padding:8px 0 8px 24px;border-top:1px solid rgba(21,34,74,.12);position:relative}
+  .needs li:first-child{border-top:0}
+  .needs li:before{content:"";position:absolute;left:1px;top:15px;width:10px;height:10px;
+    border-radius:2px;border:2px solid var(--c)}
+  .needs li.done{color:var(--ink-soft)}
+  .needs li.done:before{background:var(--c)}
+  .needs li .fl{font-size:12px;font-weight:600;color:var(--c);white-space:nowrap}
+  .flag.full{background:transparent;color:var(--c);border:1.5px solid var(--c)}
+  .btn{display:inline-block;border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+    border-radius:999px;padding:7px 14px;font:600 13.5px var(--body);cursor:pointer;
+    text-decoration:none;line-height:1.3}
+  .btn.solid{background:var(--ink);color:var(--paper)}
+  .btnrow{display:flex;gap:8px;flex-wrap:wrap}
+
+  /* ================= class fund receipt ================= */
+  .ledger{position:relative;background:var(--card);padding:20px 18px 24px;box-shadow:var(--lift);
+          border-radius:4px 4px 0 0}
+  .ledger:after{content:"";position:absolute;left:0;right:0;bottom:-11px;height:12px;
+    background:linear-gradient(135deg,var(--card) 33.33%,transparent 0),
+               linear-gradient(-135deg,var(--card) 33.33%,transparent 0);
+    background-size:18px 12px;background-repeat:repeat-x}
+  .ledger h4{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.08;
+             letter-spacing:-.02em;margin:0 0 10px;max-width:18ch}
+  .ledger p{margin:0 0 16px;font-size:14.5px}
+  .ledger .stamp{display:inline-block;transform:rotate(-3.5deg);border:2.5px solid var(--pink);
+    color:var(--pink);border-radius:4px;padding:6px 11px;margin-bottom:14px;
+    font:700 13px var(--display);letter-spacing:.01em}
+  .ledger .rule{border:0;border-top:2px dashed var(--rule);margin:0 0 15px}
+  .chain{display:flex;flex-wrap:wrap;margin:18px 0 12px;padding-left:5px}
+  .chain .lk{width:42px;height:26px;border:4px solid var(--lc,#CBBFA8);border-radius:999px;
+    margin:0 -10px 7px 0;background:transparent}
+  .chain .lk.full{background:var(--lc)}
+  .chain .lk.part{background:linear-gradient(90deg,var(--lc) var(--p),transparent 0)}
+  .chain .lk.empty{border-style:dashed}
+  .ledger p.tally{margin:0 0 5px;font-family:var(--display);font-weight:800;font-size:29px;
+    line-height:1.03;letter-spacing:-.025em}
+  .ledger p.tally .of{color:var(--ink-soft);font-weight:500;font-size:22px}
+  .ledger p.tally-note{margin:0 0 17px;font-size:13.5px;color:var(--ink-soft);max-width:34ch}
+  .ledger a.open{display:inline-block;background:var(--pink);color:#fff;text-decoration:none;
+    border-radius:999px;padding:11px 18px;font:600 14.5px var(--body)}
+
+  /* ================= teachers ================= */
+  .fav{background:var(--card);border-radius:4px;padding:16px;box-shadow:var(--lift);margin-bottom:10px;
+       border-top:7px solid var(--c)}
+  .fav:nth-of-type(1){--c:var(--pink)}
+  .fav:nth-of-type(2){--c:var(--teal)}
+  .fav:nth-of-type(3){--c:var(--gold)}
+  .fav:nth-of-type(4){--c:var(--blue)}
+  .fav.todo{background:transparent;box-shadow:none;border:2px dashed var(--rule);border-top:7px solid var(--c)}
+  .fav.todo .pending{font-size:14px;margin:0 0 14px;color:var(--ink-soft);max-width:36ch}
+  .fav.todo dd{border-bottom:2px dotted #CDBFA6;min-height:1.15em}
+  .fav b{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em}
+  .fav .role{font-size:13px;color:var(--ink-soft);margin:2px 0 11px}
+  .fav dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14.5px}
+  .fav dt{color:var(--ink-soft)}
+  .fav dd{margin:0}
+
+  /* ================= footer ================= */
+  footer{margin-top:42px;padding-top:18px;border-top:2px solid var(--rule);font-size:13.5px;color:var(--ink-soft)}
+  .toolbox{margin-top:16px;background:var(--card);border-radius:4px;padding:16px;box-shadow:var(--lift)}
+  .toolbox summary{font:700 16px var(--display);color:var(--ink);cursor:pointer}
+  textarea{width:100%;min-height:260px;margin-top:10px;border:1.5px solid var(--rule);border-radius:3px;
+    padding:11px;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);
+    background:var(--paper);resize:vertical}
+  .status{font-size:13.5px;margin-top:10px;min-height:18px}
+  .status.bad{color:#C02A4E}
+  .status.good{color:var(--teal)}
+  .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;background:var(--ink);color:#fff;
+    padding:11px 18px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;
+    transition:opacity .18s;z-index:20}
+  .toast.show{opacity:1}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  @media print{
+    .filters,.toolbox,.btnrow,.top,.signup{display:none}
+    body{background:#fff}
+    body:before{display:none}
+    .ev,.ledger,.fav,.call{box-shadow:none;border:1px solid #bbb}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="ink ink-a"></div><div class="ink ink-b"></div>
+  <div class="dots"></div>
+  <div class="wrap">
+    <h1>Second grade, all year long</h1>
+    <p class="sub">Room 2 at Westerly, with Ms. Mejia and Ms. Blancarte. Every celebration, trip and sign-up in one place.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="nextup" id="nextup"></div>
+
+  <div id="signup-slot"></div>
+
+  <div id="schoolcal-slot"></div>
+
+  <section id="callouts-wrap">
+    <h3>What we're asking of everyone</h3>
+    <div id="callouts"></div>
+  </section>
+
+  <section>
+    <h3>The year at a glance</h3>
+    <p class="lede">Dates still being confirmed are marked. Tap an event to see what it needs.</p>
+    <div class="filters" id="filters" role="group" aria-label="Filter events"></div>
+    <div id="events"></div>
+  </section>
+
+  <section>
+    <h3>Where the class fund goes</h3>
+    <div id="fund"></div>
+  </section>
+
+  <section>
+    <h3>Spoiling our teachers</h3>
+    <p class="lede">Their answers, straight from them. Handy for birthdays, Teacher Appreciation, or a random Tuesday.</p>
+    <div id="teachers"></div>
+  </section>
+
+  <footer>
+    <p id="foot-note"></p>
+    <div class="btnrow">
+      <button class="btn" id="copy-pin">Copy the WhatsApp pin text</button>
+      <button class="btn" id="ics-all">Add the whole year to my calendar</button>
+    </div>
+
+    <details class="toolbox">
+      <summary>Room parent tools</summary>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin:10px 0 0">
+        Edit the class data below, press <b>Preview changes</b> to check it on the page, then
+        <b>Download updated page</b> to get a new file to publish. Nothing saves automatically.
+      </p>
+      <textarea id="editor" spellcheck="false" aria-label="Class data"></textarea>
+      <div class="btnrow">
+        <button class="btn" id="preview">Preview changes</button>
+        <button class="btn solid" id="download">Download updated page</button>
+        <button class="btn" id="revert">Revert</button>
+      </div>
+      <p class="status" id="status"></p>
+    </details>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script id="class-data" type="application/json">
+{
+  "meta": {
+    "className": "2nd Grade, Room 2",
+    "school": "Westerly",
+    "year": "2026–27",
+    "roomParents": "Gustavo and Tiffany",
+    "contact": "Reply in the class WhatsApp group and we'll pick it up.",
+    "updated": "2026-09-12",
+    "pinText": "📌 2nd Grade Class Hub 2026–27. Every celebration, field study and volunteer ask in one page. Open the attached file and save it to your home screen.\n\nTwo things Ms. Mejia is asking for now:\n• Parents to teach a life skills segment, anything from your work or a hobby\n• Two helpers for Halloween bag making on Fri Oct 30\n\nThe year's big dates:\n• Fri Oct 30: Halloween parade, kids make their own bags\n• Fri Dec 18: Winter celebration and hot cocoa stand\n• Fri Feb 12: Valentine's, five centers\n• Thu Jun 10: Beach Day\n• Two field studies, drivers needed. The end-of-year one is a mentor and mentee trip to the space center in Downey"
+  },
+  "signup": {
+    "url": "https://docs.google.com/document/d/1Rf6DIeyLMpslN7qVXyF3JHCEUC9I0jia/edit",
+    "label": "Volunteer sign-up sheet",
+    "blurb": "One sheet for the whole year. Add your name next to whatever you can take on."
+  },
+  "schoolCalendar": {
+    "url": "https://www.westerlyschool.org/all-events",
+    "label": "Days with no school live over here",
+    "blurb": "Holidays, closures, breaks, early dismissals, picture day. Westerly keeps the official calendar and it is the one to trust. This page only tracks Room 2.",
+    "linkLabel": "Check the school calendar"
+  },
+  "callouts": [
+    {
+      "title": "Teach a life skill to the class",
+      "body": "This is the ask Ms. Mejia is most excited about. She'll propose topics through the year for her life skills segment, and she'd like parents to come in and lead one. Anything from your work or a hobby counts: wiring a circuit, kneading bread, reading a blueprint, taping an ankle. Tell us what you'd be willing to take on and we'll match you to her list.",
+      "action": "Say what you could teach in the group chat"
+    },
+    {
+      "title": "The volunteer sign-up sheet is live",
+      "body": "One sheet covering every celebration, same format as last year, so you can pick your spots in a single sitting instead of answering a dozen separate asks.",
+      "action": "Open the sign-up sheet",
+      "url": "https://docs.google.com/document/d/1Rf6DIeyLMpslN7qVXyF3JHCEUC9I0jia/edit"
+    },
+    {
+      "title": "Every day, in the backpack",
+      "body": "A nut-free snack and a refillable water bottle. A light sweater, because the classroom runs cold. And the Take-Home Folder, which goes home every night and comes back every morning, with finished homework in the back pocket on Fridays.",
+      "action": ""
+    },
+    {
+      "title": "The dismissal plan form, once a month",
+      "body": "Ms. Mejia sends this out monthly so she knows who is heading to Wildcat and who is getting picked up. Filling it in ahead of time is what keeps dismissal from turning into a scrum. If your plan changes midweek, email her directly rather than resubmitting.",
+      "action": "Fill in this month's dismissal plan",
+      "url": "https://forms.gle/DBueimUPBKHjvQgp9"
+    }
+  ],
+  "fund": {
+    "stamp": "one ask, all year",
+    "headline": "A paper chain of seventeen, one link per family.",
+    "goal": 1700,
+    "raised": 1450,
+    "perLink": 100,
+    "body": "The fund covers class celebrations, field study snacks, mentor gifts, end-of-year gifts, and thank-yous for our teachers. We collect once in September and try hard not to come back for more. Every dollar in and out is on the tracker.",
+    "linkLabel": "Open the live tracker",
+    "url": "https://docs.google.com/spreadsheets/d/14SR4aytAs5Dm0ckS7-S5wXpMs9KAeILj/edit?gid=2072415431#gid=2072415431"
+  },
+  "teachers": [
+    {
+      "name": "Ms. Mejia",
+      "role": "2nd grade teacher, birthday Dec 2",
+      "favs": {
+        "Coffee": "Horchata cold brew from Tierra Mia",
+        "Cold drink": "Strawberry lemonade",
+        "Treat": "Red velvet cupcake, or Reese's peanut butter cups",
+        "Restaurant": "Ola",
+        "Salad": "BBQ chicken salad",
+        "Sandwich": "Avocado turkey",
+        "Flowers": "Carnations",
+        "Shops": "Abercrombie & Fitch",
+        "Gift cards": "Target, Walmart, Amazon, American Eagle",
+        "Colors": "Red, and spotted print (which she notes is not the same as polka dot)",
+        "Happy place": "The beach, a book, or a shopping trip"
+      }
+    },
+    {
+      "name": "Ms. Blancarte",
+      "role": "2nd grade TA, birthday Feb 26",
+      "favs": {
+        "Coffee": "White chocolate mocha from Starbucks",
+        "Cold drink": "Lemonade, Dr. Pepper, sweet iced tea",
+        "Treat": "Sour or gummy candy, cookie dough ice cream",
+        "Restaurant": "CPK, Awesome Sushi, Bai Plu",
+        "Salad": "Chinese chicken salad",
+        "Sandwich": "Subway on Italian bread: mayo, lettuce, shredded cheese, cucumber, spinach, ranch, salt and pepper",
+        "Flowers": "Any",
+        "Shops": "Old Navy, Target",
+        "Gift cards": "Amazon, Target",
+        "Colors": "Lavender, pink, light blue",
+        "Happy place": "Walks with friends, movies, travel"
+      }
+    },
+    {
+      "name": "Ms. Mannanal",
+      "role": "Art teacher, birthday May 21",
+      "favs": {
+        "Coffee": "Mocha Mexicano, half flavors, oat milk, from Tierra Mia",
+        "Cold drink": "Iced tea",
+        "Treat": "Dark chocolate",
+        "Restaurant": "Eats everything, but bring on the noodles",
+        "Salad": "Lola's Mexican avocado and mango salad",
+        "Sandwich": "Mainly pescatarian, so fish or veggie",
+        "Flowers": "Peonies and iris",
+        "Shops": "Free People, Nordstrom Rack, lululemon, Nike, adidas",
+        "Gift cards": "Target, Michael's, anywhere to eat",
+        "Colors": "Teal, yellow, ochre, soft pinks and greys",
+        "Happy place": "Hiking, workouts, museums, tea, movies, sporting events"
+      }
+    },
+    {
+      "name": "Mrs. Ayala",
+      "role": "Spanish teacher",
+      "pending": true,
+      "note": "We've handed her the same list of questions. Her answers land right here the moment they come back, so check again before her birthday.",
+      "awaiting": [
+        "Coffee",
+        "Cold drink",
+        "Treat",
+        "Restaurant",
+        "Salad",
+        "Sandwich",
+        "Flowers",
+        "Shops",
+        "Gift cards",
+        "Colors",
+        "Happy place"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-09-18",
+      "type": "birthday",
+      "title": "Ellie's class celebration"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "birthday",
+      "title": "Luna's class celebration"
+    },
+    {
+      "date": "2026-10-13",
+      "type": "birthday",
+      "title": "Sameyah's class celebration"
+    },
+    {
+      "date": "2026-10-29",
+      "type": "birthday",
+      "title": "Avelene's class celebration"
+    },
+    {
+      "date": "2026-10-30",
+      "type": "celebration",
+      "title": "Halloween parade",
+      "blurb": "The school-wide parade is the main event. There's no separate class party. In the classroom beforehand, the kids decorate their own trick-or-treat bags.",
+      "needs": [
+        {
+          "what": "Two parents to hand out candy during the parade",
+          "filled": true
+        },
+        {
+          "what": "Wrapped candy donations, about 500 pieces",
+          "filled": true
+        },
+        {
+          "what": "Bags for the kids to decorate",
+          "filled": true
+        }
+      ]
+    },
+    {
+      "date": "2026-11-17",
+      "type": "birthday",
+      "title": "Lola's class celebration"
+    },
+    {
+      "date": "2026-11-30",
+      "type": "birthday",
+      "title": "Vyta's class celebration"
+    },
+    {
+      "date": "2026-12-02",
+      "type": "teacher",
+      "title": "Ms. Mejia's birthday",
+      "blurb": "Cards from the kids are always the hit. Room parents handle the class gift from the fund."
+    },
+    {
+      "date": "2026-12-16",
+      "type": "birthday",
+      "title": "Dodge's class celebration"
+    },
+    {
+      "date": "2026-12-17",
+      "type": "birthday",
+      "title": "Kari's class celebration"
+    },
+    {
+      "date": "2026-12-18",
+      "type": "celebration",
+      "title": "Winter celebration and hot cocoa stand",
+      "blurb": "The last Friday before winter break. The class runs a hot cocoa stand, and the kids make ornaments for their mentors.",
+      "needs": [
+        {
+          "what": "Volunteers to decorate the space beforehand",
+          "filled": true
+        },
+        {
+          "what": "Hands on the hot cocoa stand during the celebration",
+          "filled": true
+        },
+        {
+          "what": "Ornament supplies for the mentor gifts",
+          "filled": true
+        }
+      ]
+    },
+    {
+      "date": "2027-01-05",
+      "type": "birthday",
+      "title": "Claire's half-birthday celebration"
+    },
+    {
+      "date": "2027-01-15",
+      "type": "trip",
+      "title": "Mid-year field study",
+      "status": "tbd",
+      "blurb": "Destination and date still to be decided.",
+      "needs": [
+        "Parent drivers",
+        "A current driver form on file before the day"
+      ]
+    },
+    {
+      "date": "2027-01-20",
+      "type": "birthday",
+      "title": "Harper's half-birthday celebration"
+    },
+    {
+      "date": "2027-01-26",
+      "type": "birthday",
+      "title": "Wyatt's half-birthday celebration"
+    },
+    {
+      "date": "2027-02-06",
+      "type": "celebration",
+      "title": "Lunar New Year in the classroom",
+      "status": "tbd",
+      "blurb": "In-class date still to be set, likely the school day closest to Feb 6.",
+      "needs": [
+        "Families who celebrate: come share a story, a food or a tradition"
+      ]
+    },
+    {
+      "date": "2027-02-12",
+      "type": "celebration",
+      "title": "Valentine's celebration",
+      "blurb": "Four decorated centers set up around the classroom, plus the Love Monster craft.",
+      "needs": [
+        {
+          "what": "Materials for the four centers, listed on the sign-up sheet",
+          "filled": true
+        },
+        {
+          "what": "A volunteer at each of the four centers",
+          "filled": true
+        },
+        {
+          "what": "Love Monster craft prep: cutting and sorting, can be done at home",
+          "filled": true
+        }
+      ]
+    },
+    {
+      "date": "2027-02-25",
+      "type": "birthday",
+      "title": "Zayden's half-birthday celebration"
+    },
+    {
+      "date": "2027-02-26",
+      "type": "teacher",
+      "title": "Ms. Blancarte's birthday"
+    },
+    {
+      "date": "2027-03-01",
+      "type": "birthday",
+      "title": "Aria's class celebration"
+    },
+    {
+      "date": "2027-03-17",
+      "type": "celebration",
+      "title": "St. Patrick's Day",
+      "blurb": "A small in-class celebration with treats and a themed center."
+    },
+    {
+      "date": "2027-02-01",
+      "type": "teacher",
+      "title": "Staff lounge restock",
+      "blurb": "We stock the staff lounge for the teachers during February. Exact day to be confirmed.",
+      "needs": [
+        "Snack and drink donations for the lounge"
+      ],
+      "status": "tbd"
+    },
+    {
+      "date": "2027-05-13",
+      "type": "birthday",
+      "title": "Lenox's class celebration"
+    },
+    {
+      "date": "2027-05-21",
+      "type": "teacher",
+      "title": "Ms. Mannanal's birthday"
+    },
+    {
+      "date": "2027-05-28",
+      "type": "celebration",
+      "title": "Poetry celebration",
+      "status": "tbd",
+      "blurb": "The children share their poems with families. It falls in May, and the exact date is still to come.",
+      "needs": [
+        "Volunteers to set up the sharing spaces",
+        "Families to come and listen, that's the whole job"
+      ]
+    },
+    {
+      "date": "2027-05-14",
+      "type": "trip",
+      "title": "End-of-year field study, space center in Downey",
+      "status": "tbd",
+      "blurb": "A mentor and mentee trip to the space center in Downey, expected around May. Date still to be confirmed.",
+      "needs": [
+        "Parent drivers",
+        "A current driver form on file before the day"
+      ]
+    },
+    {
+      "date": "2027-06-10",
+      "type": "birthday",
+      "title": "Stone's class celebration"
+    },
+    {
+      "date": "2027-06-09",
+      "type": "birthday",
+      "title": "Nishu's class celebration"
+    },
+    {
+      "date": "2027-06-10",
+      "type": "celebration",
+      "title": "End of year celebration, Beach Day",
+      "blurb": "The classroom becomes a beach. Exact date still to be confirmed. The kids get an end-of-year gift and snacks.",
+      "needs": [
+        "A parent volunteer to take on decorations",
+        "Snacks for the kids: goldfish, lemonade and similar",
+        "Classroom set-up crew the morning of",
+        "End-of-year gifts for the class",
+        "Mentor gifts for the last exchange of the year"
+      ],
+      "status": "tbd"
+    },
+    {
+      "date": "2027-06-11",
+      "type": "school",
+      "title": "8th grade graduation and Moving Up Day"
+    },
+    {
+      "date": "2027-02-03",
+      "type": "gift",
+      "title": "Mentor Valentine's bracelet making",
+      "blurb": "In class, 1:20 to 2:00pm. The kids make bracelets for their mentors.",
+      "needs": [
+        "Four parents in the classroom for the session"
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "type": "school",
+      "title": "Picture day",
+      "blurb": "Class and individual photos. Makeup day is September 29."
+    },
+    {
+      "date": "2026-09-25",
+      "type": "school",
+      "title": "Family Reading Friday, 8:10 to 8:30am",
+      "blurb": "The first one of the year. 2nd grade hosts these once a month, and families are invited in to read with the class.",
+      "needs": [
+        "Come read with us, that's the whole ask"
+      ]
+    },
+    {
+      "date": "2026-09-25",
+      "type": "school",
+      "title": "Scholastic book orders due, 9:00pm",
+      "blurb": "Orders earn free books for the classroom library. Class code Z2Z4P."
+    }
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var ORIGINAL_HTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+  var DEFAULT_JSON = document.getElementById('class-data').textContent;
+  var data = JSON.parse(DEFAULT_JSON);
+  var filter = 'all';
+
+  var TYPES = {
+    celebration:{label:'class celebration', color:'#FF4F9A', tint:'#FFEDF5'},
+    birthday:{label:'birthday', color:'#F5A623', tint:'#FFF5E4'},
+    gift:{label:'making and prep', color:'#7B5BE0', tint:'#F1EDFD'},
+    trip:{label:'field study', color:'#00A18C', tint:'#E3F6F3'},
+    teacher:{label:'our teachers', color:'#2358C9', tint:'#E9EFFD'},
+    school:{label:'school-wide', color:'#66738F', tint:'#EEF0F5'}
+  };
+  var FILTER_LABELS = {
+    celebration:'Celebrations', birthday:'Birthdays', gift:'Making and prep',
+    trip:'Field studies', teacher:'Our teachers', school:'School-wide'
+  };
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var SHORT=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  function needsOf(e){
+    return (e.needs||[]).map(function(n){
+      return (typeof n==='string')?{what:n,filled:false}:{what:n.what,filled:!!n.filled};
+    });
+  }
+  function openCount(e){
+    return needsOf(e).filter(function(n){return !n.filled;}).length;
+  }
+
+  function parse(d){var p=d.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function today(){var t=new Date();return new Date(t.getFullYear(),t.getMonth(),t.getDate());}
+  function sorted(){return data.events.slice().sort(function(a,b){return parse(a.date)-parse(b.date);});}
+
+  function toast(msg){
+    var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._x);t._x=setTimeout(function(){t.classList.remove('show');},2200);
+  }
+
+  /* ---------- next up ---------- */
+  function renderNext(){
+    var now=today(), up=sorted().filter(function(e){return parse(e.date)>=now;});
+    var box=document.getElementById('nextup');
+    if(!up.length){
+      box.innerHTML='<div class="bar"></div><div class="pad"><p class="when">That\'s a wrap</p>'+
+        '<h2>Have a wonderful summer</h2></div>';return;
+    }
+    var e=up[0], d=parse(e.date), days=Math.round((d-now)/86400000);
+    var when=DAYS[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+(e.status==='tbd'?', still being confirmed':'');
+    var op=needsOf(e).filter(function(n){return !n.filled;});
+    var ask;
+    if(op.length){
+      ask='<p class="ask"><b>What we need:</b> '+esc(op[0].what)+(op.length>1?', and '+(op.length-1)+' more below':'')+'</p>';
+    }else if((e.needs||[]).length){
+      ask='<p class="ask"><b>This one is fully covered.</b> Thank you to everyone who signed up.</p>';
+    }else{
+      ask='<p class="ask">'+(e.type==='birthday'||e.type==='celebration'
+        ? 'Nothing needed from families, just come ready to celebrate.'
+        : 'Nothing needed from families for this one.')+'</p>';
+    }
+    box.style.setProperty('--c',TYPES[e.type].color);
+    box.innerHTML='<div class="bar"></div><div class="pad">'+
+      '<p class="when">Next up, '+esc(when)+'</p>'+
+      '<h2>'+esc(e.title)+'</h2>'+ask+
+      '<p class="days">'+(days===0?'Today':days===1?'Tomorrow':'In '+days+' days')+'</p></div>';
+  }
+
+  /* ---------- sign-up banner ---------- */
+  function renderSignup(){
+    var s=data.signup||{}, slot=document.getElementById('signup-slot');
+    if(!s.url){slot.innerHTML='';return;}
+    slot.innerHTML='<a class="signup" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+
+      '<span class="dots"></span>'+
+      '<b>'+esc(s.label||'Volunteer sign-up sheet')+'</b>'+
+      (s.blurb?'<span class="note">'+esc(s.blurb)+'</span>':'')+
+      '<span class="go">Open the sign-up sheet</span></a>';
+  }
+
+  /* ---------- school calendar ---------- */
+  function renderSchoolCal(){
+    var s=data.schoolCalendar||{}, slot=document.getElementById('schoolcal-slot');
+    if(!s.url){slot.innerHTML='';return;}
+    var cells='';
+    for(var i=0;i<12;i++)cells+='<i'+(i===5||i===6||i===10?' class="on"':'')+'></i>';
+    slot.innerHTML='<a class="wallcal" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+
+      '<span class="cal-ico"><span class="hd"><i></i><i></i></span><span class="gd">'+cells+'</span></span>'+
+      '<span><b>'+esc(s.label||'School calendar')+'</b>'+
+      (s.blurb?'<span class="note">'+esc(s.blurb)+'</span>':'')+
+      '<span class="go">'+esc(s.linkLabel||'Open the school calendar')+'</span></span></a>';
+  }
+
+  /* ---------- callouts ---------- */
+  function renderCallouts(){
+    var list=data.callouts||[];
+    document.getElementById('callouts-wrap').style.display=list.length?'':'none';
+    document.getElementById('callouts').innerHTML=list.map(function(c){
+      var act=c.action?(c.url
+        ? '<p class="act"><a href="'+esc(c.url)+'" target="_blank" rel="noopener">'+esc(c.action)+'</a></p>'
+        : '<p class="act">'+esc(c.action)+'</p>'):'';
+      return '<div class="call"><b>'+esc(c.title)+'</b><p>'+esc(c.body)+'</p>'+act+'</div>';
+    }).join('');
+  }
+
+  /* ---------- filters ---------- */
+  function renderFilters(){
+    var el=document.getElementById('filters');
+    var opts=[['all','Everything'],['help','Needs a hand']];
+    Object.keys(TYPES).forEach(function(k){opts.push([k,FILTER_LABELS[k]]);});
+    el.innerHTML=opts.map(function(o){
+      return '<button class="chip" data-f="'+o[0]+'" aria-pressed="'+(filter===o[0])+'">'+esc(o[1])+'</button>';
+    }).join('');
+    el.querySelectorAll('.chip').forEach(function(b){
+      b.onclick=function(){filter=b.dataset.f;renderFilters();renderEvents();};
+    });
+  }
+  function match(e){
+    if(filter==='all')return true;
+    if(filter==='help')return openCount(e)>0;
+    return e.type===filter;
+  }
+
+  /* ---------- events ---------- */
+  function renderEvents(){
+    var now=today(), list=sorted().filter(function(e){return parse(e.date)>=now && match(e);});
+    var host=document.getElementById('events');
+    if(!list.length){host.innerHTML='<p class="lede">Nothing left in that group this year.</p>';return;}
+    var html='',lastMonth='';
+    list.forEach(function(e,i){
+      var d=parse(e.date),key=MONTHS[d.getMonth()]+' '+d.getFullYear();
+      if(key!==lastMonth){html+='<p class="month">'+esc(key)+'</p>';lastMonth=key;}
+      var T=TYPES[e.type];
+      if(e.type==='birthday'&&!(e.needs&&e.needs.length)){
+        html+='<div class="row"><span class="rd">'+SHORT[d.getMonth()]+' '+d.getDate()+'</span>'+
+          '<span class="rn">'+esc(e.title)+'</span>'+
+          '<span class="rw">'+DAYS[d.getDay()].slice(0,3)+'</span></div>';
+        return;
+      }
+      var flags='', ns=needsOf(e), op=openCount(e);
+      if(ns.length)flags+= op>0
+        ? '<span class="flag help">'+op+' way'+(op>1?'s':'')+' to help</span>'
+        : '<span class="flag full">fully covered</span>';
+      if(e.status==='tbd')flags+='<span class="flag tbd">date not set</span>';
+      html+='<details class="ev" style="--c:'+T.color+';--tint:'+T.tint+'"><summary>'+
+        '<span class="date"><span class="d">'+d.getDate()+'</span><span class="m">'+SHORT[d.getMonth()]+'</span></span>'+
+        '<span class="t"><b>'+esc(e.title)+'</b>'+
+        '<span class="meta">'+DAYS[d.getDay()]+', '+T.label+'</span>'+
+        (flags?'<br>'+flags:'')+'</span></summary>'+
+        '<div class="body">'+
+        (e.blurb?'<p>'+esc(e.blurb)+'</p>':'')+
+        (ns.length?'<ul class="needs">'+ns.map(function(n){
+          return '<li'+(n.filled?' class="done"':'')+'>'+esc(n.what)+
+            (n.filled?' <span class="fl">covered</span>':'')+'</li>';
+        }).join('')+'</ul>':'')+
+        '<div class="btnrow"><button class="btn" data-ics="'+e.date+'|'+esc(e.title)+'">Add to my calendar</button></div>'+
+        '</div></details>';
+    });
+    host.innerHTML=html;
+    host.querySelectorAll('[data-ics]').forEach(function(b){
+      b.onclick=function(){var p=b.dataset.ics.split('|');downloadICS([{date:p[0],title:p[1]}],p[1]);};
+    });
+  }
+
+  /* ---------- class fund ---------- */
+  function chain(f){
+    var per=f.perLink||100, goal=f.goal||0, raised=f.raised||0;
+    if(!goal)return '';
+    var inks=['#FF4F9A','#F5A623','#00A18C','#7B5BE0','#2358C9'];
+    var total=Math.ceil(goal/per), done=raised/per, out='';
+    for(var i=0;i<total;i++){
+      var c=inks[i%inks.length];
+      if(i+1<=done)      out+='<span class="lk full" style="--lc:'+c+'"></span>';
+      else if(i<done)    out+='<span class="lk part" style="--lc:'+c+';--p:'+Math.round((done-i)*100)+'%"></span>';
+      else               out+='<span class="lk empty"></span>';
+    }
+    var money=function(n){return '$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:0});};
+    var left=Math.max(0,goal-raised);
+    return '<div class="chain">'+out+'</div>'+
+      '<p class="tally">'+money(raised)+' <span class="of">of '+money(goal)+'</span></p>'+
+      '<p class="tally-note">'+(left>0
+        ? 'Each link is one family chipping in ' + money(per) + '. ' + money(left) + ' to go.'
+        : 'Every link is filled. Thank you.')+'</p>';
+  }
+
+  function renderFund(){
+    var f=data.fund||{};
+    document.getElementById('fund').innerHTML=
+      '<div class="ledger">'+
+      (f.stamp?'<div class="stamp">'+esc(f.stamp)+'</div>':'')+
+      '<hr class="rule">'+
+      '<h4>'+esc(f.headline||'')+'</h4>'+
+      chain(f)+
+      '<p>'+esc(f.body||'')+'</p>'+
+      (f.url?'<a class="open" href="'+esc(f.url)+'" target="_blank" rel="noopener">'+
+        esc(f.linkLabel||'Open the tracker')+'</a>':'')+
+      '</div>';
+  }
+
+  /* ---------- teachers ---------- */
+  function renderTeachers(){
+    document.getElementById('teachers').innerHTML=data.teachers.map(function(t){
+      if(t.pending){
+        return '<div class="fav todo"><b>'+esc(t.name)+'</b><div class="role">'+esc(t.role)+'</div>'+
+          '<p class="pending">'+esc(t.note||'')+'</p><dl>'+
+          (t.awaiting||[]).map(function(k){return '<dt>'+esc(k)+'</dt><dd></dd>';}).join('')+
+          '</dl></div>';
+      }
+      return '<div class="fav"><b>'+esc(t.name)+'</b><div class="role">'+esc(t.role)+'</div><dl>'+
+        Object.keys(t.favs).map(function(k){return '<dt>'+esc(k)+'</dt><dd>'+esc(t.favs[k])+'</dd>';}).join('')+
+        '</dl></div>';
+    }).join('');
+  }
+
+  function renderFoot(){
+    var m=data.meta;
+    document.getElementById('foot-note').textContent=
+      m.className+' at '+m.school+', '+m.year+'. Kept by '+m.roomParents+'. Last updated '+m.updated+'.';
+  }
+
+  /* ---------- calendar ---------- */
+  function pad(n){return n<10?'0'+n:''+n;}
+  function icsDate(d){return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate());}
+  function fold(line){
+    var out=[],s=line;
+    while(s.length>73){out.push(s.slice(0,73));s=' '+s.slice(73);}
+    out.push(s);return out.join('\r\n');
+  }
+  function downloadICS(events,name){
+    var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Westerly 2nd Grade//Class Hub//EN','CALSCALE:GREGORIAN'];
+    events.forEach(function(e,i){
+      var d=parse(e.date),end=new Date(d.getTime()+86400000);
+      L.push('BEGIN:VEVENT');
+      L.push('UID:'+e.date+'-'+i+'@westerly-2nd');
+      L.push('DTSTAMP:'+icsDate(new Date())+'T090000Z');
+      L.push('DTSTART;VALUE=DATE:'+icsDate(d));
+      L.push('DTEND;VALUE=DATE:'+icsDate(end));
+      L.push(fold('SUMMARY:'+e.title.replace(/[,;]/g,'\\$&')));
+      if(e.blurb)L.push(fold('DESCRIPTION:'+String(e.blurb).replace(/[,;]/g,'\\$&')));
+      L.push('END:VEVENT');
+    });
+    L.push('END:VCALENDAR');
+    save(L.join('\r\n'),(name||'class-calendar').replace(/[^\w\- ]/g,'').slice(0,40)+'.ics','text/calendar');
+  }
+  function save(text,filename,mime){
+    var b=new Blob([text],{type:mime+';charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(b);a.download=filename;document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1500);
+  }
+  function copy(text){
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text);return;}
+    var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);
+    ta.select();try{document.execCommand('copy');}catch(err){}ta.remove();
+  }
+
+  /* ---------- room parent tools ---------- */
+  function wireTools(){
+    var ed=document.getElementById('editor'), st=document.getElementById('status');
+    ed.value=JSON.stringify(data,null,2);
+    document.getElementById('preview').onclick=function(){
+      try{
+        var next=JSON.parse(ed.value);
+        if(!next.events||!next.events.length)throw new Error('the event list is empty.');
+        data=next;renderAll();
+        st.className='status good';st.textContent='Looks good. The page above now shows your changes.';
+      }catch(err){
+        st.className='status bad';st.textContent='Not valid data yet: '+err.message;
+      }
+    };
+    document.getElementById('revert').onclick=function(){
+      data=JSON.parse(DEFAULT_JSON);ed.value=JSON.stringify(data,null,2);renderAll();
+      st.className='status';st.textContent='Back to the published version.';
+    };
+    document.getElementById('download').onclick=function(){
+      var body;
+      try{body=JSON.stringify(JSON.parse(ed.value),null,2);}
+      catch(err){st.className='status bad';st.textContent='Fix the data first: '+err.message;return;}
+      var open='<scr'+'ipt id="class-data" type="application/json">';
+      var i=ORIGINAL_HTML.indexOf(open);
+      var j=ORIGINAL_HTML.indexOf('</scr'+'ipt>',i);
+      if(i<0||j<0){st.className='status bad';st.textContent='Could not rebuild the file. Edit the data block in the HTML directly.';return;}
+      var out=ORIGINAL_HTML.slice(0,i+open.length)+'\n'+body+'\n'+ORIGINAL_HTML.slice(j);
+      save(out,'index.html','text/html');
+      st.className='status good';st.textContent='Downloaded as index.html. Upload it to the repo to publish.';
+    };
+    document.getElementById('copy-pin').onclick=function(){
+      copy(data.meta.pinText);toast('Pin text copied');
+    };
+    document.getElementById('ics-all').onclick=function(){
+      downloadICS(sorted(),'2nd Grade 2026-27');
+    };
+  }
+
+  function renderAll(){renderNext();renderSignup();renderSchoolCal();renderCallouts();renderFilters();renderEvents();renderFund();renderTeachers();renderFoot();}
+  renderAll();wireTools();
+})();
+</script>
+</body>
+</html>
