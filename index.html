@@ -179,16 +179,9 @@
     color:var(--pink);border-radius:4px;padding:6px 11px;margin-bottom:14px;
     font:700 13px var(--display);letter-spacing:.01em}
   .ledger .rule{border:0;border-top:2px dashed var(--rule);margin:0 0 15px}
-  .chain{display:flex;flex-wrap:wrap;margin:18px 0 12px;padding-left:5px}
-  .chain .lk{width:42px;height:26px;border:4px solid var(--lc,#CBBFA8);border-radius:999px;
-    margin:0 -10px 7px 0;background:transparent}
-  .chain .lk.full{background:var(--lc)}
-  .chain .lk.part{background:linear-gradient(90deg,var(--lc) var(--p),transparent 0)}
-  .chain .lk.empty{border-style:dashed}
-  .ledger p.tally{margin:0 0 5px;font-family:var(--display);font-weight:800;font-size:29px;
-    line-height:1.03;letter-spacing:-.025em}
-  .ledger p.tally .of{color:var(--ink-soft);font-weight:500;font-size:22px}
-  .ledger p.tally-note{margin:0 0 17px;font-size:13.5px;color:var(--ink-soft);max-width:34ch}
+  .ledger .figure{margin:2px 0 4px;font-family:var(--display);font-weight:800;font-size:44px;
+    line-height:1;letter-spacing:-.03em;color:var(--pink)}
+  .ledger p.figure-note{margin:0 0 17px;font-size:14px;color:var(--ink-soft)}
   .ledger a.open{display:inline-block;background:var(--pink);color:#fff;text-decoration:none;
     border-radius:999px;padding:11px 18px;font:600 14.5px var(--body)}
 
@@ -348,11 +341,10 @@
   ],
   "fund": {
     "stamp": "one ask, all year",
-    "headline": "A paper chain of seventeen, one link per family.",
-    "goal": 1700,
-    "raised": 1450,
-    "perLink": 100,
-    "body": "The fund covers class celebrations, field study snacks, mentor gifts, end-of-year gifts, and thank-yous for our teachers. We collect once in September and try hard not to come back for more. Every dollar in and out is on the tracker.",
+    "headline": "This is the whole budget for the year.",
+    "budget": 1550,
+    "budgetNote": "Set aside for 2nd grade, September through June.",
+    "body": "It covers class celebrations, field study snacks, mentor gifts, end-of-year gifts, and thank-yous for our teachers. We collect once in September and try hard not to come back for more. Every dollar in and out is on the tracker, so you can see exactly where it goes.",
     "linkLabel": "Open the live tracker",
     "url": "https://docs.google.com/spreadsheets/d/14SR4aytAs5Dm0ckS7-S5wXpMs9KAeILj/edit?gid=2072415431#gid=2072415431"
   },
@@ -863,24 +855,11 @@
   }
 
   /* ---------- class fund ---------- */
-  function chain(f){
-    var per=f.perLink||100, goal=f.goal||0, raised=f.raised||0;
-    if(!goal)return '';
-    var inks=['#FF4F9A','#F5A623','#00A18C','#7B5BE0','#2358C9'];
-    var total=Math.ceil(goal/per), done=raised/per, out='';
-    for(var i=0;i<total;i++){
-      var c=inks[i%inks.length];
-      if(i+1<=done)      out+='<span class="lk full" style="--lc:'+c+'"></span>';
-      else if(i<done)    out+='<span class="lk part" style="--lc:'+c+';--p:'+Math.round((done-i)*100)+'%"></span>';
-      else               out+='<span class="lk empty"></span>';
-    }
-    var money=function(n){return '$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:0});};
-    var left=Math.max(0,goal-raised);
-    return '<div class="chain">'+out+'</div>'+
-      '<p class="tally">'+money(raised)+' <span class="of">of '+money(goal)+'</span></p>'+
-      '<p class="tally-note">'+(left>0
-        ? 'Each link is one family chipping in ' + money(per) + '. ' + money(left) + ' to go.'
-        : 'Every link is filled. Thank you.')+'</p>';
+  function figure(f){
+    if(!f.budget)return '';
+    var money='$'+Number(f.budget).toLocaleString('en-US',{maximumFractionDigits:0});
+    return '<p class="figure">'+money+'</p>'+
+      (f.budgetNote?'<p class="figure-note">'+esc(f.budgetNote)+'</p>':'');
   }
 
   function renderFund(){
@@ -890,7 +869,7 @@
       (f.stamp?'<div class="stamp">'+esc(f.stamp)+'</div>':'')+
       '<hr class="rule">'+
       '<h4>'+esc(f.headline||'')+'</h4>'+
-      chain(f)+
+      figure(f)+
       '<p>'+esc(f.body||'')+'</p>'+
       (f.url?'<a class="open" href="'+esc(f.url)+'" target="_blank" rel="noopener">'+
         esc(f.linkLabel||'Open the tracker')+'</a>':'')+
