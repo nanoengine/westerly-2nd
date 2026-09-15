@@ -102,8 +102,10 @@
   /* ================= callouts ================= */
   .call{background:var(--card);border-radius:4px;padding:17px;box-shadow:var(--lift);margin-bottom:12px;
         border-top:7px solid var(--c)}
-  .call:nth-child(1){--c:var(--teal)}
+  .call{--c:var(--teal)}
   .call:nth-child(2){--c:var(--gold)}
+  .call:nth-child(3){--c:var(--pink)}
+  .call:nth-child(4){--c:var(--blue)}
   .call b{display:block;font-family:var(--display);font-weight:800;font-size:20px;line-height:1.12;
           letter-spacing:-.015em;margin-bottom:7px}
   .call p{margin:0;font-size:14.5px}
@@ -250,7 +252,7 @@
   <div id="schoolcal-slot"></div>
 
   <section id="callouts-wrap">
-    <h3>Two things we're asking of everyone</h3>
+    <h3>What we're asking of everyone</h3>
     <div id="callouts"></div>
   </section>
 
@@ -331,6 +333,17 @@
       "body": "One sheet covering every celebration, same format as last year, so you can pick your spots in a single sitting instead of answering a dozen separate asks.",
       "action": "Open the sign-up sheet",
       "url": "https://docs.google.com/document/d/1Rf6DIeyLMpslN7qVXyF3JHCEUC9I0jia/edit"
+    },
+    {
+      "title": "Every day, in the backpack",
+      "body": "A nut-free snack and a refillable water bottle. A light sweater, because the classroom runs cold. And the Take-Home Folder, which goes home every night and comes back every morning, with finished homework in the back pocket on Fridays.",
+      "action": ""
+    },
+    {
+      "title": "The dismissal plan form, once a month",
+      "body": "Ms. Mejia sends this out monthly so she knows who is heading to Wildcat and who is getting picked up. Filling it in ahead of time is what keeps dismissal from turning into a scrum. If your plan changes midweek, email her directly rather than resubmitting.",
+      "action": "Fill in this month's dismissal plan",
+      "url": "https://forms.gle/DBueimUPBKHjvQgp9"
     }
   ],
   "fund": {
@@ -658,6 +671,27 @@
       "needs": [
         "Four parents in the classroom for the session"
       ]
+    },
+    {
+      "date": "2026-09-15",
+      "type": "school",
+      "title": "Picture day",
+      "blurb": "Class and individual photos. Makeup day is September 29."
+    },
+    {
+      "date": "2026-09-25",
+      "type": "school",
+      "title": "Family Reading Friday, 8:10 to 8:30am",
+      "blurb": "The first one of the year. 2nd grade hosts these once a month, and families are invited in to read with the class.",
+      "needs": [
+        "Come read with us, that's the whole ask"
+      ]
+    },
+    {
+      "date": "2026-09-25",
+      "type": "school",
+      "title": "Scholastic book orders due, 9:00pm",
+      "blurb": "Orders earn free books for the classroom library. Class code Z2Z4P."
     }
   ]
 }
@@ -722,7 +756,9 @@
     }else if((e.needs||[]).length){
       ask='<p class="ask"><b>This one is fully covered.</b> Thank you to everyone who signed up.</p>';
     }else{
-      ask='<p class="ask">Nothing needed from families, just come ready to celebrate.</p>';
+      ask='<p class="ask">'+(e.type==='birthday'||e.type==='celebration'
+        ? 'Nothing needed from families, just come ready to celebrate.'
+        : 'Nothing needed from families for this one.')+'</p>';
     }
     box.style.setProperty('--c',TYPES[e.type].color);
     box.innerHTML='<div class="bar"></div><div class="pad">'+
