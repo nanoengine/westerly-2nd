@@ -185,6 +185,30 @@
   .ledger a.open{display:inline-block;background:var(--pink);color:#fff;text-decoration:none;
     border-radius:999px;padding:11px 18px;font:600 14.5px var(--body)}
 
+  /* ================= learning tabs ================= */
+  .tabs{display:flex;gap:6px;margin:14px 0 0;padding-left:3px}
+  .tab{flex:0 0 auto;border:2px solid var(--ink);border-bottom:0;background:var(--paper);
+    color:var(--ink);border-radius:6px 6px 0 0;padding:9px 15px 8px;cursor:pointer;
+    font:700 14.5px var(--display);position:relative;top:2px}
+  .tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+  .panel{background:var(--card);border:2px solid var(--ink);border-radius:0 4px 4px 4px;
+    padding:18px 16px;box-shadow:var(--lift)}
+  .panel > .intro{margin:0 0 16px;font-size:14.5px;color:var(--ink-soft);max-width:48ch}
+  .grp{margin-top:20px}
+  .grp:first-of-type{margin-top:0}
+  .grp h5{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.01em;margin:0 0 5px}
+  .grp .gnote{margin:0 0 12px;font-size:14px}
+  .res{list-style:none;margin:0;padding:0}
+  .res li{border-top:1px solid var(--rule)}
+  .res li:first-child{border-top:0}
+  .res a,.res span.nolink{display:flex;gap:10px;align-items:baseline;padding:10px 2px;
+    text-decoration:none;color:var(--ink);font-size:15px}
+  .res span.nolink{color:var(--ink-soft)}
+  .res .pdf{flex:0 0 auto;font:600 10.5px var(--body);letter-spacing:.06em;color:var(--pink);
+    border:1.5px solid var(--pink);border-radius:3px;padding:2px 5px;position:relative;top:-1px}
+  .res .nolink .pdf{color:var(--ink-soft);border-color:var(--rule)}
+  .res .nm{flex:1}
+
   /* ================= teachers ================= */
   .fav{background:var(--card);border-radius:4px;padding:16px;box-shadow:var(--lift);margin-bottom:10px;
        border-top:7px solid var(--c)}
@@ -259,6 +283,12 @@
   <section>
     <h3>Where the class fund goes</h3>
     <div id="fund"></div>
+  </section>
+
+  <section id="learning-wrap">
+    <h3>What they're learning</h3>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="panel" id="panel" role="tabpanel"></div>
   </section>
 
   <section>
@@ -347,6 +377,79 @@
     "body": "It covers class celebrations, field study snacks, mentor gifts, end-of-year gifts, and thank-yous for our teachers. We collect once in September and try hard not to come back for more. Every dollar in and out is on the tracker, so you can see exactly where it goes.",
     "linkLabel": "Open the live tracker",
     "url": "https://docs.google.com/spreadsheets/d/14SR4aytAs5Dm0ckS7-S5wXpMs9KAeILj/edit?gid=2072415431#gid=2072415431"
+  },
+  "learning": {
+    "tabs": [
+      {
+        "id": "cocurriculars",
+        "label": "Co-curriculars",
+        "intro": "Every specialist wrote a syllabus for the year. Worth a skim so you know what your child is doing outside Room 2.",
+        "groups": [
+          {
+            "items": [
+              {
+                "name": "Performing Arts",
+                "url": "https://drive.google.com/file/d/12fy8WkFcz7WXOqEyqrItTI9qveMaNhFc/view?usp=sharing"
+              },
+              {
+                "name": "P.E.",
+                "url": "https://drive.google.com/file/d/14D_IWOE4_udrvbtH3BaxRzQs_kWLmCvZ/view?usp=sharing"
+              },
+              {
+                "name": "Spanish",
+                "url": "https://drive.google.com/file/d/1e2LtdsH1RA7UwXClBkZhcwqCkmpCRVlB/view?usp=sharing"
+              },
+              {
+                "name": "Visual Arts",
+                "url": "https://drive.google.com/file/d/1LzmralWT4F_q_AQLa_xgelFEWZwnmiKc/view?usp=sharing"
+              },
+              {
+                "name": "WILD Lab",
+                "kind": "SLIDES",
+                "url": "https://docs.google.com/presentation/d/1etpNyjutCW5bIefNmKuy4cPMdnbCIF2jAh4kZkVVc-Q/edit?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "athome",
+        "label": "Practice at home",
+        "intro": "The same materials the class is using, sent home so you can back them up at the kitchen table.",
+        "groups": [
+          {
+            "title": "Handwriting",
+            "note": "Letter formation and pencil grip are a focus all year, and each weekly newsletter names the letters being worked on. Ms. Mejia asks families to check those letters in their child's work and correct the formation. The usual trouble spots: e's that look like c's, a's that look like u's, and how n's and h's are built.",
+            "items": [
+              {
+                "name": "Heggerty handwriting guide"
+              }
+            ]
+          },
+          {
+            "title": "Math, addition strategies",
+            "note": "The Unit 2 anchor charts from Lucky to Learn Math, the same ones on the wall in class.",
+            "items": [
+              {
+                "name": "Count On strategy"
+              },
+              {
+                "name": "Doubles addition facts, 1 to 10"
+              },
+              {
+                "name": "Near Doubles strategy"
+              },
+              {
+                "name": "Make Ten strategy"
+              },
+              {
+                "name": "Using a number line or chart"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   "teachers": [
     {
@@ -876,6 +979,36 @@
       '</div>';
   }
 
+  /* ---------- learning tabs ---------- */
+  var activeTab=0;
+  function renderLearning(){
+    var L=(data.learning&&data.learning.tabs)||[];
+    document.getElementById('learning-wrap').style.display=L.length?'':'none';
+    if(!L.length)return;
+    if(activeTab>=L.length)activeTab=0;
+    document.getElementById('tabs').innerHTML=L.map(function(t,i){
+      return '<button class="tab" role="tab" data-t="'+i+'" aria-selected="'+(i===activeTab)+'">'+
+        esc(t.label)+'</button>';
+    }).join('');
+    var t=L[activeTab];
+    document.getElementById('panel').innerHTML=
+      (t.intro?'<p class="intro">'+esc(t.intro)+'</p>':'')+
+      (t.groups||[]).map(function(g){
+        return '<div class="grp">'+
+          (g.title?'<h5>'+esc(g.title)+'</h5>':'')+
+          (g.note?'<p class="gnote">'+esc(g.note)+'</p>':'')+
+          '<ul class="res">'+(g.items||[]).map(function(it){
+            var tag='<span class="pdf">'+esc(it.kind||'PDF')+'</span><span class="nm">'+esc(it.name)+'</span>';
+            return '<li>'+(it.url
+              ? '<a href="'+esc(it.url)+'" target="_blank" rel="noopener">'+tag+'</a>'
+              : '<span class="nolink">'+tag+'</span>')+'</li>';
+          }).join('')+'</ul></div>';
+      }).join('');
+    document.getElementById('tabs').querySelectorAll('.tab').forEach(function(b){
+      b.onclick=function(){activeTab=+b.dataset.t;renderLearning();};
+    });
+  }
+
   /* ---------- teachers ---------- */
   function renderTeachers(){
     document.getElementById('teachers').innerHTML=data.teachers.map(function(t){
@@ -971,7 +1104,7 @@
     };
   }
 
-  function renderAll(){renderNext();renderSignup();renderSchoolCal();renderCallouts();renderFilters();renderEvents();renderFund();renderTeachers();renderFoot();}
+  function renderAll(){renderNext();renderSignup();renderSchoolCal();renderCallouts();renderFilters();renderEvents();renderFund();renderLearning();renderTeachers();renderFoot();}
   renderAll();wireTools();
 })();
 </script>
