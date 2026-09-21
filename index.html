@@ -186,10 +186,11 @@
     border-radius:999px;padding:11px 18px;font:600 14.5px var(--body)}
 
   /* ================= learning tabs ================= */
-  .tabs{display:flex;gap:6px;margin:14px 0 0;padding-left:3px}
+  .tabs{display:flex;gap:4px;margin:14px 0 0;padding-left:3px;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
   .tab{flex:0 0 auto;border:2px solid var(--ink);border-bottom:0;background:var(--paper);
-    color:var(--ink);border-radius:6px 6px 0 0;padding:9px 15px 8px;cursor:pointer;
-    font:700 14.5px var(--display);position:relative;top:2px}
+    color:var(--ink);border-radius:6px 6px 0 0;padding:8px 9px 7px;cursor:pointer;
+    font:700 13.5px var(--display);position:relative;top:2px;white-space:nowrap}
   .tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
   .panel{background:var(--card);border:2px solid var(--ink);border-radius:0 4px 4px 4px;
     padding:18px 16px;box-shadow:var(--lift)}
@@ -208,6 +209,30 @@
     border:1.5px solid var(--pink);border-radius:3px;padding:2px 5px;position:relative;top:-1px}
   .res .nolink .pdf{color:var(--ink-soft);border-color:var(--rule)}
   .res .nm{flex:1}
+
+  /* weekly schedule */
+  .week{margin:0 0 22px}
+  .wd{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--rule)}
+  .wd:first-child{border-top:0}
+  .wd .dn{flex:0 0 38px;font:800 14.5px var(--display);letter-spacing:-.01em;padding-top:1px}
+  .wd .sls{flex:1;display:flex;flex-direction:column;gap:4px}
+  .wd .sl{font-size:14.5px;display:flex;align-items:baseline;gap:8px}
+  .wd .sl i{flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--sc);position:relative;top:-1px}
+  .wd .sl b{font-weight:600}
+  .wd .sl span{color:var(--ink-soft)}
+  /* performances */
+  .perf{list-style:none;margin:0;padding:0}
+  .perf li{display:flex;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--rule)}
+  .perf li:first-child{border-top:0}
+  .perf .pd{flex:0 0 56px;height:56px;border-radius:50%;background:#FF6B3D;color:#fff;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--display);line-height:1}
+  .perf .pd b{font-size:20px;font-weight:800}
+  .perf .pd small{font-size:10.5px;margin-top:2px}
+  .perf .pn{flex:1}
+  .perf .pn b{display:block;font:800 17px var(--display);letter-spacing:-.01em}
+  .perf .pn span{font-size:13.5px;color:var(--ink-soft)}
+  .perf .btn{padding:6px 12px;font-size:13px}
+  .row .rt{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:1px}
 
   /* ================= teachers ================= */
   .fav{background:var(--card);border-radius:4px;padding:16px;box-shadow:var(--lift);margin-bottom:10px;
@@ -408,39 +433,123 @@
                 "kind": "SLIDES",
                 "url": "https://docs.google.com/presentation/d/1etpNyjutCW5bIefNmKuy4cPMdnbCIF2jAh4kZkVVc-Q/edit?usp=sharing"
               }
-            ]
+            ],
+            "title": "Syllabi"
           }
-        ]
+        ],
+        "schedule": {
+          "title": "Each week",
+          "colors": {
+            "Spanish": "#2358C9",
+            "P.E.": "#00A18C",
+            "Music": "#FF4F9A",
+            "Theater": "#7B5BE0"
+          },
+          "days": [
+            {
+              "day": "Mon",
+              "slots": [
+                {
+                  "what": "Spanish",
+                  "time": "11:50 to 12:30"
+                }
+              ]
+            },
+            {
+              "day": "Tue",
+              "slots": [
+                {
+                  "what": "P.E.",
+                  "time": "9:40 to 10:20"
+                },
+                {
+                  "what": "Spanish",
+                  "time": "1:20 to 2:00"
+                }
+              ]
+            },
+            {
+              "day": "Wed",
+              "slots": [
+                {
+                  "what": "Music",
+                  "time": "11:50 to 12:30"
+                }
+              ]
+            },
+            {
+              "day": "Thu",
+              "slots": [
+                {
+                  "what": "P.E.",
+                  "time": "9:40 to 10:20"
+                },
+                {
+                  "what": "Theater",
+                  "time": "11:50 to 12:30"
+                }
+              ]
+            },
+            {
+              "day": "Fri",
+              "slots": [
+                {
+                  "what": "P.E.",
+                  "time": "12:45 to 1:25"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "performances",
+        "label": "Performances",
+        "intro": "Two nights on stage this year. Worth blocking off now.",
+        "fromType": "performance"
       },
       {
         "id": "athome",
-        "label": "Practice at home",
+        "label": "At home",
         "intro": "The same materials the class is using, sent home so you can back them up at the kitchen table.",
         "groups": [
           {
             "title": "Handwriting",
             "note": "Letter formation and pencil grip are a focus all year, and each weekly newsletter names the letters being worked on. Ms. Mejia asks families to check those letters in their child's work and correct the formation. The usual trouble spots: e's that look like c's, a's that look like u's, and how n's and h's are built.",
             "items": [
-              
-                {"name": "Heggerty handwriting guide", "url": "resources/handwriting.pdf"}
-              
+              {
+                "name": "Heggerty handwriting guide"
+              }
             ]
           },
           {
             "title": "Math, addition strategies",
             "note": "The Unit 2 anchor charts from Lucky to Learn Math, the same ones on the wall in class.",
             "items": [
-      
-      {"name": "Count On strategy", "url": "resources/count-on.pdf"},
-      {"name": "Doubles addition facts, 1 to 10", "url": "resources/doubles.pdf"},
-      {"name": "Near Doubles strategy", "url": "resources/near-doubles.pdf"},
-      {"name": "Make Ten strategy", "url": "resources/make-ten.pdf"},
-      {"name": "Using a number line or chart", "url": "resources/number-line.pdf"}
+              {
+                "name": "Count On strategy"
+              },
+              {
+                "name": "Doubles addition facts, 1 to 10"
+              },
+              {
+                "name": "Near Doubles strategy"
+              },
+              {
+                "name": "Make Ten strategy"
+              },
+              {
+                "name": "Using a number line or chart"
+              }
             ]
           }
         ]
       }
     ]
+  },
+  "birthdayTimes": {
+    "monThu": "12:35 to 12:55pm",
+    "friday": "12:00 to 12:20pm"
   },
   "teachers": [
     {
@@ -778,6 +887,18 @@
       "type": "school",
       "title": "Scholastic book orders due, 9:00pm",
       "blurb": "Orders earn free books for the classroom library. Class code Z2Z4P."
+    },
+    {
+      "date": "2026-12-10",
+      "type": "performance",
+      "title": "Winter concert",
+      "blurb": "2nd grade takes the stage for the school's winter concert."
+    },
+    {
+      "date": "2027-05-28",
+      "type": "performance",
+      "title": "Spring arts festival",
+      "blurb": "2nd grade performs at the spring arts festival."
     }
   ]
 }
@@ -796,15 +917,24 @@
     gift:{label:'making and prep', color:'#7B5BE0', tint:'#F1EDFD'},
     trip:{label:'field study', color:'#00A18C', tint:'#E3F6F3'},
     teacher:{label:'our teachers', color:'#2358C9', tint:'#E9EFFD'},
-    school:{label:'school-wide', color:'#66738F', tint:'#EEF0F5'}
+    school:{label:'school-wide', color:'#66738F', tint:'#EEF0F5'},
+    performance:{label:'performance', color:'#FF6B3D', tint:'#FFEEE6'}
   };
   var FILTER_LABELS = {
     celebration:'Celebrations', birthday:'Birthdays', gift:'Making and prep',
-    trip:'Field studies', teacher:'Our teachers', school:'School-wide'
+    trip:'Field studies', teacher:'Our teachers', school:'School-wide', performance:'Performances'
   };
   var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
   var SHORT=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  function timeOf(e){
+    if(e.time)return e.time;
+    if(e.type==='birthday'&&data.birthdayTimes){
+      return parse(e.date).getDay()===5?data.birthdayTimes.friday:data.birthdayTimes.monThu;
+    }
+    return '';
+  }
 
   function needsOf(e){
     return (e.needs||[]).map(function(n){
@@ -834,7 +964,8 @@
         '<h2>Have a wonderful summer</h2></div>';return;
     }
     var e=up[0], d=parse(e.date), days=Math.round((d-now)/86400000);
-    var when=DAYS[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+(e.status==='tbd'?', still being confirmed':'');
+    var tm=timeOf(e);
+    var when=DAYS[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+(tm?', '+tm:'')+(e.status==='tbd'?', still being confirmed':'');
     var op=needsOf(e).filter(function(n){return !n.filled;});
     var ask;
     if(op.length){
@@ -918,9 +1049,10 @@
       if(key!==lastMonth){html+='<p class="month">'+esc(key)+'</p>';lastMonth=key;}
       var T=TYPES[e.type];
       if(e.type==='birthday'&&!(e.needs&&e.needs.length)){
+        var bt=timeOf(e);
         html+='<div class="row"><span class="rd">'+SHORT[d.getMonth()]+' '+d.getDate()+'</span>'+
-          '<span class="rn">'+esc(e.title)+'</span>'+
-          '<span class="rw">'+DAYS[d.getDay()].slice(0,3)+'</span></div>';
+          '<span class="rn">'+esc(e.title)+
+          '<span class="rt">'+DAYS[d.getDay()]+(bt?', '+esc(bt):'')+'</span></span></div>';
         return;
       }
       var flags='', ns=needsOf(e), op=openCount(e);
@@ -931,7 +1063,7 @@
       html+='<details class="ev" style="--c:'+T.color+';--tint:'+T.tint+'"><summary>'+
         '<span class="date"><span class="d">'+d.getDate()+'</span><span class="m">'+SHORT[d.getMonth()]+'</span></span>'+
         '<span class="t"><b>'+esc(e.title)+'</b>'+
-        '<span class="meta">'+DAYS[d.getDay()]+', '+T.label+'</span>'+
+        '<span class="meta">'+DAYS[d.getDay()]+(timeOf(e)?', '+esc(timeOf(e)):'')+', '+T.label+'</span>'+
         (flags?'<br>'+flags:'')+'</span></summary>'+
         '<div class="body">'+
         (e.blurb?'<p>'+esc(e.blurb)+'</p>':'')+
@@ -982,8 +1114,30 @@
         esc(t.label)+'</button>';
     }).join('');
     var t=L[activeTab];
+    var sched='';
+    if(t.schedule&&t.schedule.days){
+      var col=t.schedule.colors||{};
+      sched='<div class="grp"><h5>'+esc(t.schedule.title||'Each week')+'</h5><div class="week">'+
+        t.schedule.days.map(function(dy){
+          return '<div class="wd"><span class="dn">'+esc(dy.day)+'</span><span class="sls">'+
+            dy.slots.map(function(s){
+              return '<span class="sl" style="--sc:'+(col[s.what]||'var(--slate)')+'"><i></i><b>'+esc(s.what)+'</b><span>'+esc(s.time)+'</span></span>';
+            }).join('')+'</span></div>';
+        }).join('')+'</div></div>';
+    }
+    var perf='';
+    if(t.fromType){
+      var now=today(), evs=sorted().filter(function(e){return e.type===t.fromType;});
+      perf='<ul class="perf">'+evs.map(function(e){
+        var d=parse(e.date), past=d<now;
+        return '<li'+(past?' style="opacity:.5"':'')+'><span class="pd"><b>'+d.getDate()+'</b><small>'+SHORT[d.getMonth()]+'</small></span>'+
+          '<span class="pn"><b>'+esc(e.title)+'</b><span>'+DAYS[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()+
+          (timeOf(e)?', '+esc(timeOf(e)):'')+'</span></span>'+
+          (past?'':'<button class="btn" data-pics="'+e.date+'|'+esc(e.title)+'">Add</button>')+'</li>';
+      }).join('')+'</ul>';
+    }
     document.getElementById('panel').innerHTML=
-      (t.intro?'<p class="intro">'+esc(t.intro)+'</p>':'')+
+      (t.intro?'<p class="intro">'+esc(t.intro)+'</p>':'')+sched+perf+
       (t.groups||[]).map(function(g){
         return '<div class="grp">'+
           (g.title?'<h5>'+esc(g.title)+'</h5>':'')+
@@ -997,6 +1151,9 @@
       }).join('');
     document.getElementById('tabs').querySelectorAll('.tab').forEach(function(b){
       b.onclick=function(){activeTab=+b.dataset.t;renderLearning();};
+    });
+    document.getElementById('panel').querySelectorAll('[data-pics]').forEach(function(b){
+      b.onclick=function(){var p=b.dataset.pics.split('|');downloadICS([{date:p[0],title:p[1]}],p[1]);};
     });
   }
 
