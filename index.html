@@ -220,6 +220,8 @@
   .wd .sl i{flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--sc);position:relative;top:-1px}
   .wd .sl b{font-weight:600}
   .wd .sl span{color:var(--ink-soft)}
+  .wd .sl em{font-style:normal;font-size:11px;color:var(--ink-soft);border:1px solid var(--rule);
+    border-radius:3px;padding:1px 5px;white-space:nowrap}
   /* performances */
   .perf{list-style:none;margin:0;padding:0}
   .perf li{display:flex;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--rule)}
@@ -444,7 +446,8 @@
             "Spanish": "#2358C9",
             "P.E.": "#00A18C",
             "Music": "#FF4F9A",
-            "Theater": "#7B5BE0"
+            "Theater": "#7B5BE0",
+            "WILD Lab": "#F5A623"
           },
           "days": [
             {
@@ -488,6 +491,11 @@
                 {
                   "what": "Theater",
                   "time": "11:50 to 12:30"
+                },
+                {
+                  "what": "WILD Lab",
+                  "time": "1:20 to 2:10",
+                  "note": "Trimester 1"
                 }
               ]
             },
@@ -1130,7 +1138,8 @@
         t.schedule.days.map(function(dy){
           return '<div class="wd"><span class="dn">'+esc(dy.day)+'</span><span class="sls">'+
             dy.slots.map(function(s){
-              return '<span class="sl" style="--sc:'+(col[s.what]||'var(--slate)')+'"><i></i><b>'+esc(s.what)+'</b><span>'+esc(s.time)+'</span></span>';
+              return '<span class="sl" style="--sc:'+(col[s.what]||'var(--slate)')+'"><i></i><b>'+esc(s.what)+'</b><span>'+esc(s.time)+'</span>'+
+                (s.note?'<em>'+esc(s.note)+'</em>':'')+'</span>';
             }).join('')+'</span></div>';
         }).join('')+'</div></div>';
     }
